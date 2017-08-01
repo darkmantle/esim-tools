@@ -18,7 +18,9 @@ Route::get('/', function() {
 
 Route::group(['middleware' => 'api', 'prefix' => 'api'], function() {
     Route::get('/exchange', function() {
-        $crawler = new Crawler(file_get_contents(__DIR__.'\test.html'));
+        //$crawler = new Crawler(file_get_contents(__DIR__.'\test.html'));
+        $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/monetaryMarket.html'));
+
         $items = array();
         $crawler = $crawler->filter('table');
 
