@@ -45,7 +45,7 @@ Route::get('/citizen/{id}', function ($id) {
         $citizen->party = $party->getNode(0)->nodeValue;
     }
 
-    print_r($citizen);
+    return response()->json($citizen);
 
 });
 Route::get('/exchange/{from}/{to}', function ($from, $to) {
