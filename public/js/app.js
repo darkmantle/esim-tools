@@ -43536,25 +43536,100 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            message: '',
-            list: []
+            toList: [],
+            fromList: []
         };
     },
     mounted: function mounted() {
-        console.log("HUR");
-        this.fetchTaskList();
+        this.fetch(6, 0);
+        this.fetch(0, 6);
     },
 
     methods: {
-        fetchTaskList: function fetchTaskList() {
-            this.$http.get('/api/exchange').then(function (response) {
-                console.log(response);
-                this.list = response.data;
+        fetch: function fetch(to, fro) {
+            this.$http.get('/api/exchange/' + to + '/' + fro).then(function (response) {
+                if (to === 0) {
+                    this.toList = response.data;
+                } else {
+                    this.fromList = response.data;
+                }
             });
+        },
+        changeCurrency: function changeCurrency(event) {
+            this.fetchTaskList(event.target.value);
         }
     }
 });
@@ -43569,15 +43644,213 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-8 col-md-offset-2"
+    staticClass: "col-xs-12 col-sm-4 col-sm-push-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('select', {
+    staticClass: "form-control",
+    attrs: {
+      "id": "buy",
+      "name": "buyerCurrencyId"
+    },
+    on: {
+      "change": _vm.changeCurrency
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "64"
+    }
+  }, [_vm._v("DZD (Algeria)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "24"
+    }
+  }, [_vm._v("ARS (Argentina)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "131"
+    }
+  }, [_vm._v("AMD (Armenia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "13"
+    }
+  }, [_vm._v("BAM (Bosnia and Herzegovina)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "23"
+    }
+  }, [_vm._v("BRL (Brazil)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "10"
+    }
+  }, [_vm._v("BGN (Bulgaria)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "119"
+    }
+  }, [_vm._v("KHR (Cambodia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "28"
+    }
+  }, [_vm._v("CNY (China)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "46"
+    }
+  }, [_vm._v("COP (Colombia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "156"
+    }
+  }, [_vm._v("CY (Cyprus)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "51"
+    }
+  }, [_vm._v("CZK (Czech Republic)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "57"
+    }
+  }, [_vm._v("EGP (Egypt)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "53"
+    }
+  }, [_vm._v("EEK (Estonia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "4"
+    }
+  }, [_vm._v("FRF (France)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "133"
+    }
+  }, [_vm._v("GEL (Georgia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "3"
+    }
+  }, [_vm._v("DEM (Germany)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "8"
+    }
+  }, [_vm._v("HUF (Hungary)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "165"
+    }
+  }, [_vm._v("ISK (Iceland)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "34"
+    }
+  }, [_vm._v("INR (India)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "29"
+    }
+  }, [_vm._v("IDR (Indonesia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "30"
+    }
+  }, [_vm._v("IRR (Iran)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "38"
+    }
+  }, [_vm._v("IEP (Ireland)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "33"
+    }
+  }, [_vm._v("NIS (Israel)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "7"
+    }
+  }, [_vm._v("ITL (Italy)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "778"
+    }
+  }, [_vm._v("KKD (Kekistan)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "19"
+    }
+  }, [_vm._v("LTL (Lithuania)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "72"
+    }
+  }, [_vm._v("MAD (Morocco)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "41"
+    }
+  }, [_vm._v("PKR (Pakistan)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "44"
+    }
+  }, [_vm._v("PEN (Peru)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "54"
+    }
+  }, [_vm._v("PHP (Philippines)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "1"
+    }
+  }, [_vm._v("PLN (Poland)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "18"
+    }
+  }, [_vm._v("PTE (Portugal)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "9"
+    }
+  }, [_vm._v("RON (Romania)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "2"
+    }
+  }, [_vm._v("RUB (Russia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "11"
+    }
+  }, [_vm._v("RSD (Serbia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "49"
+    }
+  }, [_vm._v("SKK (Slovakia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "5"
+    }
+  }, [_vm._v("ESP (Spain)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "32"
+    }
+  }, [_vm._v("TWD (Taiwan)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "80"
+    }
+  }, [_vm._v("TND (Tunisia)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "22"
+    }
+  }, [_vm._v("TRY (Turkey)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "6",
+      "selected": ""
+    }
+  }, [_vm._v("GBP (United Kingdom)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "26"
+    }
+  }, [_vm._v("USD (USA)")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "56"
+    }
+  }, [_vm._v("VEF (Venezuela)")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
   }, [_c('table', {
     staticClass: "table table-striped table-bordered"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.list), function(task) {
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.toList), function(task) {
+    return _c('tr', _vm._l((task), function(item) {
+      return _c('td', [_vm._v("\n                        " + _vm._s(item) + "\n                    ")])
+    }))
+  }))])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('table', {
+    staticClass: "table table-striped table-bordered"
+  }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.fromList), function(task) {
     return _c('tr', _vm._l((task), function(item) {
       return _c('td', [_vm._v("\n                        " + _vm._s(item) + "\n                    ")])
     }))
   }))])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Seller")]), _vm._v(" "), _c('th', [_vm._v("Amount")]), _vm._v(" "), _c('th', [_vm._v("Ratio")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Amount")]), _vm._v(" "), _c('th', [_vm._v("Ratio")])])])
 }]}
 module.exports.render._withStripped = true
