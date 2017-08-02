@@ -43385,7 +43385,7 @@ var Component = __webpack_require__(39)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\mantl\\PhpstormProjects\\esim\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "C:\\Users\\Elite8100Sff\\PhpstormProjects\\esim-tools\\resources\\assets\\js\\components\\Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -43396,9 +43396,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-79f2fd98", Component.options)
+    hotAPI.createRecord("data-v-97a6b6b4", Component.options)
   } else {
-    hotAPI.reload("data-v-79f2fd98", Component.options)
+    hotAPI.reload("data-v-97a6b6b4", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -43629,7 +43629,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         changeCurrency: function changeCurrency(event) {
-            this.fetchTaskList(event.target.value);
+            this.fetch(event.target.value, 0);
+            this.fetch(0, event.target.value);
         }
     }
 });
@@ -43836,28 +43837,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('table', {
     staticClass: "table table-striped table-bordered"
   }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.toList), function(task) {
-    return _c('tr', _vm._l((task), function(item) {
-      return _c('td', [_vm._v("\n                        " + _vm._s(item) + "\n                    ")])
-    }))
+    return _c('tr', [_c('td', [_vm._v(_vm._s(task.seller))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(task.amount))]), _vm._v(" "), _c('td', [_vm._v("1 " + _vm._s(task.from) + " = " + _vm._s(task.rate) + " " + _vm._s(task.to))])])
   }))])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('table', {
     staticClass: "table table-striped table-bordered"
   }, [_vm._m(1), _vm._v(" "), _c('tbody', _vm._l((_vm.fromList), function(task) {
-    return _c('tr', _vm._l((task), function(item) {
-      return _c('td', [_vm._v("\n                        " + _vm._s(item) + "\n                    ")])
-    }))
+    return _c('tr', [_c('td', [_vm._v(_vm._s(task.seller))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(task.amount))]), _vm._v(" "), _c('td', [_vm._v("1 " + _vm._s(task.from) + " = " + _vm._s(task.rate) + " " + _vm._s(task.to))])])
   }))])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("Seller")]), _vm._v(" "), _c('th', [_vm._v("Amount")]), _vm._v(" "), _c('th', [_vm._v("Ratio")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Amount")]), _vm._v(" "), _c('th', [_vm._v("Ratio")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Seller")]), _vm._v(" "), _c('th', [_vm._v("Amount")]), _vm._v(" "), _c('th', [_vm._v("Ratio")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-79f2fd98", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-97a6b6b4", module.exports)
   }
 }
 

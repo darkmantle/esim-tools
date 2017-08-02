@@ -63,9 +63,9 @@
                     </thead>
                     <tbody>
                     <tr v-for="task in toList">
-                        <td v-for="item in task">
-                            {{item}}
-                        </td>
+                    <td>{{ task.seller }}</td>
+                    <td>{{ task.amount }}</td>
+                    <td>1 {{task.from}} = {{ task.rate }} {{task.to}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -74,16 +74,16 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Seller</th>
                         <th>Amount</th>
                         <th>Ratio</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="task in fromList">
-                        <td v-for="item in task">
-                            {{item}}
-                        </td>
+                        <td>{{ task.seller }}</td>
+                        <td>{{ task.amount }}</td>
+                        <td>1 {{task.from}} = {{ task.rate }} {{task.to}}</td>
                     </tr>
                     </tbody>
                 </table>
