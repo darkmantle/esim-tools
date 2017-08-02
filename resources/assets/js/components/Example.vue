@@ -115,7 +115,8 @@
                 })
             },
             changeCurrency: function(event) {
-                this.fetchTaskList(event.target.value);
+                this.fetch(event.target.value, 0);
+                this.fetch(0, event.target.value);
             }
         }
     }
