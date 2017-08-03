@@ -43981,6 +43981,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43994,9 +43996,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         fetch: function fetch(country) {
+            var f = this;
+
             this.$http.get('/api/product/grain/' + country + '/1').then(function (response) {
-                this.list = response.data;
-                console.log(response);
+                var data = response.data;
+                f.$http.get('/api/exchange/0/' + country).then(function (response) {
+                    console.log(response.data);
+                    for (var i = 0; i < data.length; i++) {
+                        data[i].goldPrice = data[i].price * response.data[0].rate;
+                    }
+                    this.list = data;
+                });
             });
         },
         changeCurrency: function changeCurrency(event) {
@@ -44207,10 +44217,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('table', {
     staticClass: "table table-striped table-bordered"
   }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.list), function(task) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(task.seller))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(task.amount))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(task.price) + "}")])])
+    return _c('tr', [_c('td', [_vm._v(_vm._s(task.seller))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(task.amount))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(task.price))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(task.goldPrice))])])
   }))])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Seller")]), _vm._v(" "), _c('th', [_vm._v("Amount")]), _vm._v(" "), _c('th', [_vm._v("Price")])])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Seller")]), _vm._v(" "), _c('th', [_vm._v("Amount")]), _vm._v(" "), _c('th', [_vm._v("Price")]), _vm._v(" "), _c('th', [_vm._v("Gold Price")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

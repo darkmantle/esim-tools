@@ -59,13 +59,15 @@
                         <th>Seller</th>
                         <th>Amount</th>
                         <th>Price</th>
+                        <th>Gold Price</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="task in list">
-                    <td>{{ task.seller }}</td>
-                    <td>{{ task.amount }}</td>
-                    <td>{{ task.price }}}</td>
+                        <td>{{ task.seller }}</td>
+                        <td>{{ task.amount }}</td>
+                        <td>{{ task.price }}</td>
+                        <td>{{ task.goldPrice }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -86,12 +88,21 @@
         },
         methods: {
             fetch: function (country) {
-                this.$http.get('/api/product/grain/'+country+'/1').then(function (response) {
-                    this.list = response.data;
-                    console.log(response);
+                const f = this;
+
+                this.$http.get('/api/product/grain/' + country + '/1').then(function (response) {
+                    const data = response.data;
+                    f.$http.get('/api/exchange/0/'+country).then(function (response) {
+                        console.log(response.data);
+                        for (let i = 0; i < data.length; i++) {
+                            data[i].goldPrice = data[i].price * response.data[0].rate;
+                        }
+                        this.list = data;
+                    });
+
                 })
             },
-            changeCurrency: function(event) {
+            changeCurrency: function (event) {
                 this.fetch(event.target.value);
             }
         }

@@ -25,7 +25,7 @@ Route::get('/product/{resource}/{country}/{quality}', function ($resource, $coun
         $country = -1;
     }
     $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/productMarket.html?resource='.strtoupper($resource).'&countryId='.$country.'&quality='.$quality.'&page=1'));
-    //$crawler = new Crawler(file_get_contents(__DIR__ . '\test.html'));
+    // = new Crawler(file_get_contents(__DIR__ . '\test.html'));
 
     $table = $crawler->filter('.dataTable');
 
