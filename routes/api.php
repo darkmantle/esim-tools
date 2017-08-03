@@ -31,6 +31,9 @@ Route::get('/product/{resource}/{country}/{quality}', function ($resource, $coun
 
     $results = array();
     foreach ($table->children() as $row) {
+        if ($row->nodeValue == "No offers") {
+            return response()->json(null);
+        }
         $string = explode("You ", $row->nodeValue)[0];
         $arr = array_reverse(preg_split("^[\n\r\s★]+^", trim($string)));
         if ($arr[1] != "Price") {
