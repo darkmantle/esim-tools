@@ -20,7 +20,7 @@ function parseName($str)
     return str_replace(" ", "", lcfirst(ucwords(strtolower($str))));
 }
 
-Route::get('/product/{resource}/{country}/{quality}', function ($resource, $country, $quality, $page) {
+Route::get('/product/{resource}/{country}/{quality}', function ($resource, $country, $quality) {
     if ($country == 0) {
         $country = -1;
     }
