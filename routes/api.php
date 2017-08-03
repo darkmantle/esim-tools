@@ -31,6 +31,7 @@ Route::get('/product/{resource}/{country}/{quality}', function ($resource, $coun
 
     $results = array();
     foreach ($table->children() as $row) {
+        echo $row->nodeValue.'<br>';
         if ($row->nodeValue == "No offers") {
             return response()->json(null);
         }
@@ -52,7 +53,7 @@ Route::get('/product/{resource}/{country}/{quality}', function ($resource, $coun
         }
     }
 
-    return response()->json($results);
+    //return response()->json($results);
 
 
 });
