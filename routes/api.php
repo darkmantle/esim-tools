@@ -15,12 +15,46 @@ use Symfony\Component\DomCrawler\Crawler;
 |
 */
 
-function parseName($str) {
+function parseName($str)
+{
     return str_replace(" ", "", lcfirst(ucwords(strtolower($str))));
 }
 
+Route::get('/product/{resource}/{country}/{quality}', function ($resource, $country, $quality, $page) {
+    if ($country == 0) {
+        $country = -1;
+    }
+    $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/productMarket.html?resource='.strtoupper($resource).'&countryId='.$country.'&quality='.$quality.'&page=1'));
+    //$crawler = new Crawler(file_get_contents(__DIR__ . '\test.html'));
+
+    $table = $crawler->filter('.dataTable');
+
+    $results = array();
+    foreach ($table->children() as $row) {
+        $string = explode("You ", $row->nodeValue)[0];
+        $arr = array_reverse(preg_split("^[\n\r\s★]+^", trim($string)));
+        if ($arr[1] != "Price") {
+
+            $seller = '';
+            for ($i = 3; $i < count($arr); $i++) {
+                $seller = $arr[$i]." ".$seller;
+            }
+
+            $product = new stdClass();
+            $product->currency = $arr[0];
+            $product->price = $arr[1];
+            $product->amount = $arr[2];
+            $product->seller = trim($seller);
+            $results[] = $product;
+        }
+    }
+
+    return response()->json($results);
+
+
+});
 Route::get('/citizen/{id}', function ($id) {
-    $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/profile.html?id='.$id));
+    $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/profile.html?id=' . $id));
     //$crawler = new Crawler(file_get_contents(__DIR__ . '\test.html'));
 
     $citizen = new stdClass();

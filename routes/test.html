@@ -35,7 +35,6 @@
 
     <link href="//cdn.e-sim.org//css/esim-style.css" type="text/css" rel="stylesheet">
 
-    <link href="//cdn.e-sim.org//css/achievementsSprite70.css" type="text/css" rel="stylesheet">
     <link rel="icon" type="image/png" href="//cdn.e-sim.org//img/favicon.png"/>
 
     <title>e-sim -
@@ -370,730 +369,631 @@
     </div>
     <div class="foundation-style column-margin-both column-margin-vertical column small-8 foundation-text-center no-style">
         <td valign="top" colspan="2" style="text-align: center">
-            <div class="testDivblue" style="width:731px;min-height:30px;margin:3px 2px;overflow:auto;word-wrap:break-word;">
-                <div  style="width:80%">
-                    <h2 style="display: inline">Citizen&nbsp;Admin</h2>
+            <h1><span></span>Marketplace</h1>
+            <br/>
 
-                    <b style="color: #900; font-size: 12px">Offline</b>
-                </div>
-                <div style="display: inline; float: right; margin-top: -2.2em;">
-                </div>
+            <div  style="width:540px;" class="testDivblue "><b id="showOffers">Show Offers:</b><br/>
+                <form id="productMarketViewForm" action="productMarket.html" method="GET"><script type="text/javascript">
+                    $(document).ready(function() {
+                        $(".productList img[title]").tooltip();
+
+                        $("#marketProducts > div").click(function(event) {
+                            event.target.parentNode.parentNode.nextSibling.nextSibling.checked = true;
+                        });
+
+                    });
+                </script>
+
+                    <div class="productList" style="font-size: 9px; margin: 54px 16px 0 0; display:inline-block">
+                        <div class="product">
+                            <div>
+                            </div>
+                        </div>
+                        <input id="resource1" name="resource" type="radio" value=""/><label for="resource1">Any</label><script type="text/javascript">
+                        $('#resource1').attr("checked", "checked");
+                    </script>
+                    </div>
+
+                    <div id="marketProducts" style="text-align: center;display:inline-block">
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Iron.png" title="Used to create weapons" />
+                                </div>
+                            </div>
+                            <input id="resource2" name="resource" type="radio" value="IRON"/><label for="resource2">Iron</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="Raw material to produce food" />
+                                </div>
+                            </div>
+                            <input id="resource3" name="resource" type="radio" value="GRAIN"/><label for="resource3">Grain</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Oil.png" title="Used to create tickets" />
+                                </div>
+                            </div>
+                            <input id="resource4" name="resource" type="radio" value="OIL"/><label for="resource4">Oil</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Stone.png" title="Used to build hospitals, estates and defense system" />
+                                </div>
+                            </div>
+                            <input id="resource5" name="resource" type="radio" value="STONE"/><label for="resource5">Stone</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Wood.png" title="Used to build houses" />
+                                </div>
+                            </div>
+                            <input id="resource6" name="resource" type="radio" value="WOOD"/><label for="resource6">Wood</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Diamonds.png" title="Used to produce gifts" />
+                                </div>
+                            </div>
+                            <input id="resource7" name="resource" type="radio" value="DIAMONDS"/><label for="resource7">Diam.</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Weapon.png" title="Increases damage in battle" />
+                                </div>
+                            </div>
+                            <input id="resource8" name="resource" type="radio" value="WEAPON"/><label for="resource8">Weap.</label></div>
+                        <p style="clear: both"></p><br>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/House.png" title="Increases maximum food limit" />
+                                </div>
+                            </div>
+                            <input id="resource9" name="resource" type="radio" value="HOUSE"/><label for="resource9">House</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Gift.png" title="Restores health" />
+                                </div>
+                            </div>
+                            <input id="resource10" name="resource" type="radio" value="GIFT"/><label for="resource10">Gift</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Food.png" title="Restores health" />
+                                </div>
+                            </div>
+                            <input id="resource11" name="resource" type="radio" value="FOOD"/><label for="resource11">Food</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Ticket.png" title="Used to travel around the world" />
+                                </div>
+                            </div>
+                            <input id="resource12" name="resource" type="radio" value="TICKET"/><label for="resource12">Ticket</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Defense System.png" title="Increases defenders damage in battle by 5%-25% (depends on defense system quality)" />
+                                </div>
+                            </div>
+                            <input id="resource13" name="resource" type="radio" value="DEFENSE_SYSTEM"/><label for="resource13">DS</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Hospital.png" title="Gives from 5% to 25% chance to regenerate damage" />
+                                </div>
+                            </div>
+                            <input id="resource14" name="resource" type="radio" value="HOSPITAL"/><label for="resource14">Hosp.</label></div>
+                        <div class="productList" style="font-size: 9px; margin: 8px 0 8px 0">
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Estate.png" title="Increases maximum gift limit" />
+                                </div>
+                            </div>
+                            <input id="resource15" name="resource" type="radio" value="ESTATE"/><label for="resource15">Est.</label></div>
+                    </div>
+
+
+                    <p style="clear: both"></p>
+
+                    Country:<select id="countryId" name="countryId"><option value="-1" selected="selected">Any country</option><option value="64">Algeria</option><option value="24">Argentina</option><option value="131">Armenia</option><option value="13">Bosnia and Herzegovina</option><option value="23">Brazil</option><option value="10">Bulgaria</option><option value="119">Cambodia</option><option value="28">China</option><option value="46">Colombia</option><option value="156">Cyprus</option><option value="51">Czech Republic</option><option value="57">Egypt</option><option value="53">Estonia</option><option value="4">France</option><option value="133">Georgia</option><option value="3">Germany</option><option value="8">Hungary</option><option value="165">Iceland</option><option value="34">India</option><option value="29">Indonesia</option><option value="30">Iran</option><option value="38">Ireland</option><option value="33">Israel</option><option value="7">Italy</option><option value="778">Kekistan</option><option value="19">Lithuania</option><option value="72">Morocco</option><option value="41">Pakistan</option><option value="44">Peru</option><option value="54">Philippines</option><option value="1">Poland</option><option value="18">Portugal</option><option value="9">Romania</option><option value="2">Russia</option><option value="11">Serbia</option><option value="49">Slovakia</option><option value="5">Spain</option><option value="32">Taiwan</option><option value="80">Tunisia</option><option value="22">Turkey</option><option value="6">United Kingdom</option><option value="26">USA</option><option value="56">Venezuela</option></select>Quality:<select id="quality" name="quality"><option value="0" selected="selected">Any quality</option><option value="1">Q1</option><option value="2">Q2</option><option value="3">Q3</option><option value="4">Q4</option><option value="5">Q5</option></select><input type="submit" value="View offers"/>
+
+                    <br/>
+                    <div style="text-align: right;width:99%" class="biggerFont">
+                        <br>
+                        <button type="button" class="foundation-style button" onclick="location.href = 'storage.html?storageType=PRODUCT';">
+                            Show my offers/post new offer</button>
+                    </div>
+
+                </form><p style="clear: both"></p> </div><p style="clear: both"></p>
+            <hr class="littleDashedLine"/><hr class="littleDashedLine">
+            <div style="width: 100%; float: left">
+                <table style="width: 100%; margin-left: auto; margin-right: auto;" class="dataTable" >
+                    <tr> <td>Product</td> <td>Seller</td> <td>Stock</td> <td>Price</td> <td style="width:30%">Buy</td> </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Food.png" title="" />
+                                    <img src="//cdn.e-sim.org//img/productIcons/q1.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=2943">jorgeP97</a> <div class="flags-small Portugal"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/2363_small">
+                        </td>
+                        <td> 737</td>
+                        <td>
+                            <div class="flags-small Portugal"></div> <b title="0.08000">0.08</b> PTE</td>
+                        <td>
+
+                            You must be in Portugal to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Gift.png" title="" />
+                                    <img src="//cdn.e-sim.org//img/productIcons/q1.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=51"><span class="premiumStar">&#9733;</span> Portugal Org</a> <div class="flags-small Portugal"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/4924_small">
+                        </td>
+                        <td> 635</td>
+                        <td>
+                            <div class="flags-small Portugal"></div> <b title="0.10000">0.10</b> PTE</td>
+                        <td>
+
+                            You must be in Portugal to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Oil.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=1414"><span class="premiumStar">&#9733;</span> championIR</a> <div class="flags-small Iran"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/866_small">
+                        </td>
+                        <td> 494</td>
+                        <td>
+                            <div class="flags-small Turkey"></div> <b title="0.10000">0.10</b> TRY</td>
+                        <td>
+
+                            You must be in Turkey to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=1151">Surf314</a> <div class="flags-small Peru"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1521_small">
+                        </td>
+                        <td> 99</td>
+                        <td>
+                            <div class="flags-small Peru"></div> <b title="0.10000">0.10</b> PEN</td>
+                        <td>
+
+                            You must be in Peru to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=7726">Teona</a> <div class="flags-small Serbia"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/4367_small">
+                        </td>
+                        <td> 92</td>
+                        <td>
+                            <div class="flags-small Serbia"></div> <b title="0.10000">0.10</b> RSD</td>
+                        <td>
+
+                            You must be in Serbia to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a style="color: #f00; text-decoration: line-through;" href="profile.html?id=1080">Kesito</a> <div class="flags-small Peru"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/595_small">
+                        </td>
+                        <td> 100</td>
+                        <td>
+                            <div class="flags-small Peru"></div> <b title="0.11000">0.11</b> PEN</td>
+                        <td>
+
+                            You must be in Peru to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=3420">gama16</a> <div class="flags-small Kekistan"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/2589_small">
+                        </td>
+                        <td> 100</td>
+                        <td>
+                            <div class="flags-small Czech-Republic"></div> <b title="0.11000">0.11</b> CZK</td>
+                        <td>
+
+                            You must be in Czech Republic to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Oil.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=24"><span class="premiumStar">&#9733;</span> Argentina Org</a> <div class="flags-small Argentina"></div><br/>
+                            <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
+                        </td>
+                        <td> 1140</td>
+                        <td>
+                            <div class="flags-small Poland"></div> <b title="0.13000">0.13</b> PLN</td>
+                        <td>
+
+                            You must be in Poland to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=10431">Turkey_army</a> <div class="flags-small Turkey"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/5835_small">
+                        </td>
+                        <td> 100</td>
+                        <td>
+                            <div class="flags-small Turkey"></div> <b title="0.13000">0.13</b> TRY</td>
+                        <td>
+
+                            You must be in Turkey to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=4608"><span class="premiumStar">&#9733;</span> Bulunmayan</a> <div class="flags-small Spain"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/2829_small">
+                        </td>
+                        <td> 100</td>
+                        <td>
+                            <div class="flags-small Spain"></div> <b title="0.13000">0.13</b> ESP</td>
+                        <td>
+
+                            You must be in Spain to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=2072"><span class="premiumStar">&#9733;</span> emesti13</a> <div class="flags-small India"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1371_small">
+                        </td>
+                        <td> 93</td>
+                        <td>
+                            <div class="flags-small Turkey"></div> <b title="0.13000">0.13</b> TRY</td>
+                        <td>
+
+                            You must be in Turkey to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=1618">dx2000</a> <div class="flags-small Italy"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1041_small">
+                        </td>
+                        <td> 92</td>
+                        <td>
+                            <div class="flags-small Italy"></div> <b title="0.13000">0.13</b> ITL</td>
+                        <td>
+
+                            You must be in Italy to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Oil.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=6365"><span class="premiumStar">&#9733;</span> coyote</a> <div class="flags-small France"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3840_small">
+                        </td>
+                        <td> 90</td>
+                        <td>
+                            <div class="flags-small Poland"></div> <b title="0.13000">0.13</b> PLN</td>
+                        <td>
+
+                            You must be in Poland to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Oil.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=50"><span class="premiumStar">&#9733;</span> Poland Org</a> <div class="flags-small Poland"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/5009_small">
+                        </td>
+                        <td> 5979</td>
+                        <td>
+                            <div class="flags-small Poland"></div> <b title="0.14000">0.14</b> PLN</td>
+                        <td>
+
+                            You must be in Poland to buy this product!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="product">
+                                <div>
+                                    <img src="//cdn.e-sim.org//img/productIcons/Grain.png" title="" />
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a  href="profile.html?id=1839">Lazkopat</a> <div class="flags-small Turkey"></div><br/>
+                            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1171_small">
+                        </td>
+                        <td> 482</td>
+                        <td>
+                            <div class="flags-small Turkey"></div> <b title="0.14000">0.14</b> TRY</td>
+                        <td>
+
+                            You must be in Turkey to buy this product!
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <ul id="pagination-digg"> <script type="text/javascript">
+                    $(document).ready(function() {
+                        $('#pagingButton').click(function(event) {
+                            window.location = 'productMarket.html?resource=&countryId=-1&quality=0&page='+$('#pagingInput').val();
+                        });
+                    });
+                </script>
+                    <li class="previous-off">«Previous</li> <li class="active">1</li>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=2">2</a></li>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=3">3</a></li>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=4">4</a></li>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=5">5</a></li>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=6">6</a></li>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=7">7</a></li>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=8">8</a></li> <lI class="gotopage"><input type="text" style="width: 20px" id="pagingInput" value="1"></lI> <lI class="gotopageInput"><input type="submit" id="pagingButton" style="width: 30px" value="Go"></lI>  <li><a href="productMarket.html?resource=&countryId=-1&quality=0&page=79">Last</a></li>  <li class="next"><a href="productMarket.html?resource=&countryId=-1&quality=0&page=2">Next»</a></li>  </ul> <br/>
             </div>
 
-            <table style="width: 100%">
-                <tr>
-                    <td style="width: 250px" valign="top">
-                        <div  style="width:200px;" class="testDivblue "><style>.myTextInDoc{width:180px;text-align:center;float:left;font-family:"open sans",sans-serif;}</style>
+            <script>
+                function validateAmount(id) {
+                    var parts = id.split("_");
+                    var offerId = parts[1];
+                    var maxQuantity = parts[2];
+                    var offerInput = document.getElementById(id).value;
+                    var selectListId = "selectBuyer_" + offerId;
+                    var selectList = "";
 
-                            <div style="width: 160px; margin: auto">
-                                <div style="width: 32px; float: left; height: 32px;"><IMG src="//cdn.e-sim.org//img/star_32.png"></div>
-                                <div style="height: 32px" >
-                                    <B style="font-size:13px; line-height: 32px">Premium account</B><br/>
-                                </div>
-                            </div>
-                            <img class="bigAvatar" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1596_normal " />  <br/>
-                            <b>Buffs:</b><br/>
-                            None<br/>
-                            <b>Debuffs:</b><br/>
-                            None<br/>
-                            <p style="clear: both"></p> </div><div  style="width:200px;" class="testDivblue "><div style="padding:3px;margin:0px 0px 5px" class="smallStatsLabel blueLabel"><b>Rookie</b>
-                        <img style="display: block; margin: 0 auto;" src="//cdn.e-sim.org//img/rankIcons/Rookie.png" />
-                    </div>
-                        <table style="text-align:left;" class="smallTableFont">
-                            <tr>
-                                <td style="width:100px"><b>Level:</b></td>
-                                <td style="width:100px"><div class="statsLabel smallStatsLabel blueLabel"><b>1</b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Experience:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>1</b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Damage:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>0</b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Economy skill:</b></td>
-                                <td>
-                                    <div class="statsLabel smallStatsLabel blueLabel"><b>1.0</b>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><b>Strength:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>300</b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Location:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b><div class="flags-small Serbia"></div>
-                                    <span class="countryNameTranslated">Serbia</span>
-                                </b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Citizenship:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b><div class="flags-small Serbia"></div>
-                                    <span class="countryNameTranslated">Serbia</span>
-                                </b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Birthday:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>Day 1</b></div></td>
-                            </tr>
-                        </table>
-                        <p style="clear: both"></p> </div><div  style="width:200px;" class="testDivblue "><h3 style="text-align:center;">Ranks</h3>
-                        <table style="text-align:left;" class="smallTableFont">
-                            <tr>
-                                <td style="width:100px"><b>National by XP:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>116 / 109</b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>National by DMG:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>79 / 109</b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Global by XP:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>6,005 / 6,357</b></div></td>
-                            </tr>
-                            <tr>
-                                <td><b>Global by DMG:</b></td>
-                                <td><div class="statsLabel smallStatsLabel blueLabel"><b>3,859 / 6,357</b></div></td>
-                            </tr>
-                        </table>
-                        <p style="clear: both"></p> </div><div  style="width:200px;" class="testDivblue "><B>Military unit:</B><br/>
-                        No military unit<p style="clear: both"></p>
-                        <B>Party:</B><br/>
-                        No party<p style="clear: both"></p>
-                        <B >Newspaper:</B><br/>
-                        No newspaper<p style="clear: both"></p>
-                        <B>Working at:</B><br/>
-                        No workplace<p style="clear: both"></p>
-                        <B>Owned companies (0):</B><br/>
-                        No companies<p style="clear: both"></p>
-                        <B>Political office:</B><br/>
-                        <b style="color: #000">No office</b><br/>
-                        <br/><p style="clear: both"></p> </div></td>
-                    <td valign="top">
-                        <div  style="width:500px;width:auto;" class="testDivblue "><h2 class="blueHeader">Administrator</h2>
-                            <p style="clear: both"></p> </div><div  style="width:500px;min-height:220px;text-align:center;" class="testDivwhite "><style>
-                        #profileEquipmentNew div:nth-child(1) {position:absolute;top:0px;left:0px;}
-                        #profileEquipmentNew div:nth-child(2) {position:absolute;top:0px;left:5px;}
-                        #profileEquipmentNew div:nth-child(3) {position:absolute;top:0px;left:137px;}
-                        #profileEquipmentNew div:nth-child(4) {position:absolute;top:78px;left:73px;}
-                        #profileEquipmentNew div:nth-child(5) {position:absolute;top:134px;left:0px;}
-                        #profileEquipmentNew div:nth-child(6) {position:absolute;top:134px;left:147px;}
-                        #profileEquipmentNew div:nth-child(7) {position:absolute;top:-2px;left:225px;}
-                        #profileEquipmentNew div:nth-child(8) {position:absolute;top:72px;left:225px;}
-                        #profileEquipmentNew div:nth-child(9) {position:absolute;top:146px;left:225px;}
-                        #profileEquipmentNew .equipmentBox {
-                            background-color: transparent !important;
-                            border: 0px solid transparent !important;
-                            box-shadow: none !important;
-                            height: auto !important;
-                            margin: 0 !important;
-                            width: auto !important;
+                    if (false) {
+                        selectList = document.getElementById(selectListId).value;
+                    }
+
+                    if (selectList != "") {
+                        $("#submit_" + offerId).prop("disabled", false);
+                        $("#submit_" + offerId).css("opacity", 1);
+                    } else {
+                        if (isNaN(Number(offerInput)) || Number(offerInput) > Number(maxQuantity) || Number(offerInput) <= 0 || !offerInput) {
+                            $("#submit_" + offerId).prop("disabled", true);
+                            $("#submit_" + offerId).css("opacity", 0.5);
+                        } else {
+                            $("#submit_" + offerId).prop("disabled", false);
+                            $("#submit_" + offerId).css("opacity", 1);
                         }
-                        #profileEquipmentNew .equipmentBack {
-                            position:relative;
-                        }
-                        #eqStatsTable {
-                            margin:auto;
-                            width:150px;
-                            font-size: 12px;
-                            border-collapse:collapse;
-                            border-radius:10px;
-                        }
-                        #eqStatsTable TR:nth-child(odd){background-color:rgba(40,80,180,0.3);}
-                        #eqStatsTable TR:nth-child(even){background-color:rgba(40,80,180,0.2);}
-                        #eqStatsTable TD {
-                            padding: 2px 0 3px 0;
-                            border-bottom: 1px solid rgba(255,255,255,0.4);
-                        }
-                        #eqStatsTable i {
-                            vertical-align: middle;
-                        }
-                    </style>
+                    }
+                }
 
-                        <div id="profileEquipmentNew" style="width:290px;float:left;margin-top:8px;position:relative;height:216px; background:url(//cdn.e-sim.org//img/equipmentIcons/equipment-back.png) no-repeat -9px 9px;" class="testDivwhite "><div style="width:1px;height:1px;background-color:rgba(0,0,0,0.0)"></div>
-                            <div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><div class="equipmentBox" style="width: 84px !important;height: 84px !important;"><div class="equipmentBack q0" style="margin: 7px 7px !important;"><div title='No item' class="help class equipmentImage "></div></div></div><p style="clear: both"></p> </div><div class='eqStats' style="float:right; width:170px;min-height:210px;">
-                            <table id="eqStatsTable">
-                                <tr>
-                                    <td style="border-radius:10px 10px 0 0;">
-                                        <span style="font-size:12px;font-weight:800;">Damage:</span>
-                                        <br>
-                                        <div id="hitTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width:215px;display:none;position:absolute;z-index:100;">
-                                            <div style="min-height: 25px;">
-                                                <div class="statsLabel smallDescLabel"><b>Base hit</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>240 / 360</b></div>
-                                            </div>
-                                            <div style="min-height: 25px;">
-                                                <div class="statsLabel smallDescLabel"><b>Your hit</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>240 / 360</b></div>
-                                            </div>
-                                        </div>
-                                        <div id="hitHelp" title="" tooltip="hitTooltip" class="help whiteShadow" style="clear:both;float:none !important;">
-                                            <b style="margin-left:4px">240</b> /
-                                            <b style="margin-right:4px">360</b>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span style="font-size:12px;font-weight:800;">Critical hit:</span>
-                                        <br>
-                                        <div style="clear:both;float:none !important;" class="whiteShadow">
-                                            <b style="margin-left:4px">480</b> / <b style="margin-right:4px">720</b>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div id="criticalTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width:215px;display:none;position:absolute;z-index:100;">
-                                            <div style="min-height: 25px;">
-                                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Base critical chance</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>12.5 %</b></div>
-                                            </div>
-                                            <div style="min-height: 25px;">
-                                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Total critical chance</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>12.5 %</b></div>
-                                            </div>
-                                        </div>
-                                        <div id="criticalHelp" tooltip='criticalTooltip' title="" class="help">
-                                            <i class="icon-danger"></i> 12.5 %
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div id="missTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width:215px;display:none;position:absolute;z-index:100;">
-                                            <div style="min-height: 25px;">
-                                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Base miss chance</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>12.5 %</b></div>
-                                            </div>
-                                            <div style="min-height: 25px;">
-                                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Overall miss chance</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>12.5 %</b></div>
-                                            </div>
-                                        </div>
-                                        <div id="missHelp" title="" tooltip="missTooltip" class="help">
-                                            <i class="icon-scope2"></i> 12.5 %
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div id="avoidTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width:215px;display:none;position:absolute;z-index:100;">
-                                            <div style="min-height: 25px;">
-                                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Base chance to avoid DMG:</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>5.0 %</b></div>
-                                            </div>
-                                            <div style="min-height: 25px;">
-                                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Overall chance to avoid DMG</b></div>
-                                                <div class="statsLabelRight descStatsLabel blueLabel"><b>5.0 %</b></div>
-                                            </div>
-                                        </div>
-                                        <div id="avoidHelp" tooltip='avoidTooltip' title="" class="help">
-                                            <i class="icon-shield2"></i> 5.0 %
-                                        </div>
-                        </div>
-                    </td>
-                </tr>
+                function setMaxAmount(id) {
+                    var parts = id.split("_");
+                    var offerId = parts[1];
+                    var maxQuantity = parts[2];
 
-                <tr>
-                    <td>
-                        <div id="lessWeaponsTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width: 215px; display: none; position: absolute; z-index: 100;">
-                            <div style="min-height: 25px;">
-                                <div style="width: 150px;" class="statsLabel smallDescLabel">
-                                    <b>Base chance to use less weapons per berserk</b>
-                                </div>
-                                <div class="statsLabelRight descStatsLabel blueLabel">
-                                    <b>5.0</b>
-                                </div>
-                            </div>
-                            <div style="min-height: 25px;">
-                                <div style="width: 150px;" class="statsLabel smallDescLabel">
-                                    <b>Final chance to use less weapons per berserk</b>
-                                </div>
-                                <div class="statsLabelRight descStatsLabel blueLabel">
-                                    <b>0.0</b>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="lessWeaponsHelp" title="" tooltip="lessWeaponsTooltip" class="help">
-                            <i class="icon-gunshot"></i> 0.0 %
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="findWeaponTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width: 215px; display: none; position: absolute; z-index: 100;">
-                            <div style="min-height: 25px;">
-                                <div style="width: 150px;" class="statsLabel smallDescLabel">
-                                    <b>Base chance to find a weapon</b>
-                                </div>
-                                <div class="statsLabelRight descStatsLabel blueLabel">
-                                    <b>5.0</b>
-                                </div>
-                            </div>
-                            <div style="min-height: 25px;">
-                                <div style="width: 150px;" class="statsLabel smallDescLabel">
-                                    <b>Final chance to find a weapon</b>
-                                </div>
-                                <div class="statsLabelRight descStatsLabel blueLabel">
-                                    <b>0.0</b>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="findWeaponHelp" title="" tooltip="findWeaponTooltip" class="help">
-                            <i class="icon-weapon"></i> 0.0 %
-                        </div>
-                    </td>
-                </tr>
+                    $("#input_" + offerId + "_" + maxQuantity).val(maxQuantity);
 
-                <tr>
-                    <td>
-                        <div id="freeFlightTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width:215px;display:none;position:absolute;z-index:100;">
-                            <div style="min-height: 25px;">
-                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Free flight base chance</b></div>
-                                <div class="statsLabelRight descStatsLabel blueLabel"><b>5.0 %</b></div>
-                            </div>
-                            <div style="min-height: 25px;">
-                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Free flight final chance</b></div>
-                                <div class="statsLabelRight descStatsLabel blueLabel"><b>0.0 %</b></div>
-                            </div>
-                        </div>
-                        <div id="freeFlightHelp" title="" tooltip="freeFlightTooltip" class="help">
-                            <i class="icon-airplane2"></i> 0.0 %
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="border-radius:0 0 10px 10px;">
-                        <div id="ecoSkillTooltip" class="ui-tooltip ui-widget ui-widget-content ui-corner-all" style="width:215px;display:none;position:absolute;z-index:100;">
-                            <div style="min-height: 25px;">
-                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Base economy skill increase</b></div>
-                                <div class="statsLabelRight descStatsLabel blueLabel"><b>0.0</b></div>
-                            </div>
-                            <div style="min-height: 25px;">
-                                <div style="width:150px;" class="statsLabel smallDescLabel"><b>Final economy skill increase</b></div>
-                                <div class="statsLabelRight descStatsLabel blueLabel"><b>0.0</b></div>
-                            </div>
-                        </div>
-                        <div id="ecoSkillHelp" title="" tooltip="ecoSkillTooltip" class="help">
-                            <i class="icon-stockup"></i> +0.0</div>
-                    </td>
-                </tr>
-            </table>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $('.eqStats div.help').hover(function(e) {
-                        $(this).tooltip({
-                            content: $('#' + $(this).attr('tooltip')).html(),
-                            position: {
-                                my: "left center",
-                                at: "right center"
-                            },
-                            show: {effect: "fade", delay: 100, duration: 200},
-                            hide: {effect: "fade", delay: 100, duration: 200}
+                    $("#submit_" + offerId).prop("disabled", false);
+                    $("#submit_" + offerId).css("opacity", 1);
+                }
 
-                        });
-                        $('.ui-tooltip-content .help').tooltip({
-                            show: {effect: "fade", delay: 100, duration: 200},
-                            hide: {effect: "fade", delay: 100, duration: 200}
-                        });
+                function selectBuyer(id, maxQuantity) {
+                    var parts = id.split("_");
+                    var offerId = parts[1];
 
-                    });
-                    $('i.help').tooltip();
-
-                });
+                    var selectedBuyer = document.getElementById(id).value;
+                    if (selectedBuyer != "") {
+                        $("#maxBt_" + offerId +"_" + maxQuantity).hide();
+                    } else {
+                        $("#maxBt_" + offerId +"_" + maxQuantity).show();
+                    }
+                }
             </script>
+            <br />
+        </td>
     </div>
+    <script type="text/javascript" src="//cdn.e-sim.org//js/dragresize.js"></script>
+    <div class="foundation-style foundation-text-center foundation-base-font small-10 columns column-margin-both column-margin-vertical-down">
 
-    <p style="clear: both"></p> </div><div  style="width:500px;width:auto;height:100px;" class="testDivblue "><style type="text/css">
-    #medals > div.medal {
-        float: left; width: 52px; position: relative;
-    }
-    #medals div.medal {
-        width: 50px !important;
-    }
-    #medals > div.medal > img {
-        width: 48px !important;
-    }
-    #medals > div.medal > div {
-        width: 52px;
-        position: absolute;
-        top:5px;
-        font-size: 13px;
-        font-weight: bold;
-    }
-</style>
-    <div id="medals">
-        <p style="clear: both"></p>
-        <style>[class*="block-grid-"]>li {padding: 0;}</style><ul class="foundation-style small-block-grid-10">
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for winning congress elections." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for winning the presidential elections." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="The Super soldier medal is awarded for every 30 training sessions." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for Inviting 10 citizens and aiding them to reach level 7." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for each 100 citizens, who subscribed your newspaper." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for working 30 days in a row." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for dealing the highest damage in a battle round (one medal for the top attacker and defender)." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Citizen has initiated a successful Resistance war which was won by the Resistance force." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for reporting bugs, working on wiki and other contributions to e-sim." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-        <li class="medal" style="text-align:center;position:relative">
-            <img class="help" title="Awarded for winning a tournament battle and dealing necessary hits (min. 30 or 50) in the battle." style="width: 52px" src="//cdn.e-sim.org//img/medals/emptyMedal.png"></li>
-    </ul>
-    </div><p style="clear: both"></p> </div><div  style="width:500px;width:auto;" class="testDivwhite "><style>
-    #pagination-digg a {
-        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-        border: 0 none;
-        box-shadow: none;
-        color: #222222;
-        display: block;
-        margin: 0;
-        padding: 0.4em 0.8em !important;
-        text-decoration: none;
-        text-shadow: 0 0 1px #FFFFFF, 0 1px #FFFFFF;
-        cursor:pointer;
-    }
-    #pagination-digg a:hover {
-        border: 0 none;
-        box-shadow: none !important;
-        outline:1px solid rgba(200,200,255,0.5);
-    }
-</style>
-    <b class="biggerFont">Friends(13):</b><br/><br/>
-    <div id="friendsList"><div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a style="color: #888;" href="profile.html?id=1154">Force</a> <div class="flags-small Poland"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/679_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=9794">Mr Tusk</a> <div class="flags-small Poland"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/5292_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=3139">Pomplicious</a> <div class="flags-small Poland"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/2121_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=6121">alko176</a> <div class="flags-small Bosnia-and-Herzegovina"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="//cdn.e-sim.org//img/blank-avatar.png">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=2541"><span class="premiumStar">&#9733;</span> wonderful</a> <div class="flags-small USA"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1770_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a style="color: #888;" href="profile.html?id=206">Syphax</a> <div class="flags-small Peru"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="//cdn.e-sim.org//img/blank-avatar.png">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=5102">testingcode</a> <div class="flags-small Brazil"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3244_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=116"><span class="premiumStar">&#9733;</span> Arabic Wolf</a> <div class="flags-small Tunisia"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3694_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=5108">Cebec</a> <div class="flags-small Spain"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3944_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=5556">Mr Robot</a> <div class="flags-small Poland"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3409_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=2167"><span class="premiumStar">&#9733;</span> TheLion</a> <div class="flags-small Iceland"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1487_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=7902">Raed_Taylor</a> <div class="flags-small Algeria"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/4427_small">
-        </div>
-        <div style="float: left; width: 125px; height: 90px; word-wrap: break-word; font-size:10px;">
-            <a  href="profile.html?id=4543">karpati</a> <div class="flags-small Lithuania"></div><br/>
-            <img style="width:40px; height:40px; border:1px solid #888;" src="//cdn.e-sim.org//img/blank-avatar.png">
-        </div>
-        <p style="clear: both"></p>
-        <br/>
-        <div style="text-align: center"></div>
-        <br/>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                function sendAjaxPageRequest(page) {
-                    $.ajax({
-                        type: "GET",
-                        url: "profileFriendsList.html",
-                        data: {'id': 1, 'page': page},
-                        success: function(msg) {
-                            $('#friendsList > div').replaceWith(msg);
-                        }
-                    });
-                }
-                $(".sendAjaxPaging").click(function(e) {
-                    var page = $(this)[0].name;
-                    sendAjaxPageRequest(page);
-                    return false;
-                });
-            });
-        </script>
-    </div>
-    </div><p style="clear: both"></p> </div><div  style="width:500px;width:auto;" class="testDivwhite "><b class="biggerFont">Top achievements:</b><br/>
-    <a href="#" class="adrop" id="TREASURE_GUARDIANdrop">
-        <div title="Treasure Guardian" class="foundation-style small-1-4 columns column-margin-vertical help">
-            <div style="margin:0 auto;" class="sprite TREASURE_GUARDIAN"></div>
-        </div>
-    </a>
-    <div id="hiddenA" style="display:none;">
-        <div class="newachievement foundation-style foundation-text-center foundation-base-font-dark">
-            <h2><a href="achievement.html?type=TREASURE_GUARDIAN">Treasure Guardian</a></h2>
-            <div class="foundation-style columns column-margin-vertical">
-                <div style="margin:0 auto;" class="sprite TREASURE_GUARDIAN"></div></div><u><i>Description:</i></u><br/>Own at least 500 of pure gold <div>
-            Achieved: 02-08-2017<br/>
-            Achieved by 46 of 6,357 players(<b>0.72%</b>)<br/>
-        </div>
-        </div>
-    </div>
-    <a href="#" class="adrop" id="INVITE_CONGRESSMANdrop">
-        <div title="Congressman Inviter" class="foundation-style small-1-4 columns column-margin-vertical help">
-            <div style="margin:0 auto;" class="sprite INVITE_CONGRESSMAN"></div>
-        </div>
-    </a>
-    <div id="hiddenA" style="display:none;">
-        <div class="newachievement foundation-style foundation-text-center foundation-base-font-dark">
-            <h2><a href="achievement.html?type=INVITE_CONGRESSMAN">Congressman Inviter</a></h2>
-            <div class="foundation-style columns column-margin-vertical">
-                <div style="margin:0 auto;" class="sprite INVITE_CONGRESSMAN"></div></div><u><i>Description:</i></u><br/>Invite a player, who became a congressman
-            <br/><br/><i><u>Achievement notes:</u></i><br/><div class="unescape"> Achieved for inviting <img align="absmiddle" class="smallAvatar" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3694_small"> <a class="profileLink"  href="profile.html?id=116"><span class="premiumStar">&#9733;</span> Arabic Wolf</a>   </div><br> <div>
-            Achieved: 31-07-2017<br/>
-            Achieved by 186 of 6,357 players(<b>2.93%</b>)<br/>
-        </div>
-        </div>
-    </div>
-    <a href="#" class="adrop" id="INVITE_FRIEND_WITH_MEDALdrop">
-        <div title="Invite medal owner" class="foundation-style small-1-4 columns column-margin-vertical help">
-            <div style="margin:0 auto;" class="sprite INVITE_FRIEND_WITH_MEDAL"></div>
-        </div>
-    </a>
-    <div id="hiddenA" style="display:none;">
-        <div class="newachievement foundation-style foundation-text-center foundation-base-font-dark">
-            <h2><a href="achievement.html?type=INVITE_FRIEND_WITH_MEDAL">Invite medal owner</a></h2>
-            <div class="foundation-style columns column-margin-vertical">
-                <div style="margin:0 auto;" class="sprite INVITE_FRIEND_WITH_MEDAL"></div></div><u><i>Description:</i></u><br/>Invite a player with medal
-            <br/><br/><i><u>Achievement notes:</u></i><br/><div class="unescape"> Achieved for inviting: <img align="absmiddle" class="smallAvatar" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3694_small"> <a class="profileLink"  href="profile.html?id=116"><span class="premiumStar">&#9733;</span> Arabic Wolf</a>   who received Tournament medal</div><br> <div>
-            Achieved: 28-07-2017<br/>
-            Achieved by 341 of 6,357 players(<b>5.36%</b>)<br/>
-        </div>
-        </div>
-    </div>
-    <a href="#" class="adrop" id="INVITE_LVL7_CITIZENdrop">
-        <div title="Inviter" class="foundation-style small-1-4 columns column-margin-vertical help">
-            <div style="margin:0 auto;" class="sprite INVITE_LVL7_CITIZEN"></div>
-        </div>
-    </a>
-    <div id="hiddenA" style="display:none;">
-        <div class="newachievement foundation-style foundation-text-center foundation-base-font-dark">
-            <h2><a href="achievement.html?type=INVITE_LVL7_CITIZEN">Inviter</a></h2>
-            <div class="foundation-style columns column-margin-vertical">
-                <div style="margin:0 auto;" class="sprite INVITE_LVL7_CITIZEN"></div></div><u><i>Description:</i></u><br/>Invite a player who reached level 7
-            <br/><br/><i><u>Achievement notes:</u></i><br/><div class="unescape"> Achieved for inviting <img align="absmiddle" class="smallAvatar" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3694_small"> <a class="profileLink"  href="profile.html?id=116"><span class="premiumStar">&#9733;</span> Arabic Wolf</a>   </div><br> <div>
-            Achieved: 29-07-2017<br/>
-            Achieved by 436 of 6,357 players(<b>6.86%</b>)<br/>
-        </div>
-        </div>
-    </div>
-    <p style="clear: both"></p>
-    Total achievements: 6 of 196<br/>
-    <a href="citizenAchievements.html?id=1">See all achievements</a>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.adrop').click(function(e) {
-                e.preventDefault();
-                picoModal($(this).next().html());
-            });
-            $(".help").mouseenter(function() {
-                var $b = $(".unescape a");
-                for (var i = 0; i < $b.length; i++) {
-                    $b.eq(i).html($b.eq(i).text());
-                }
-            });
-        });
-    </script><p style="clear: both"></p> </div><div id="citizenShouts" style="width:350px;width:auto;" class="testDivblue "><b class="biggerFont">Shouts:</b><br/>
-    <div id="countryShouts" class="newsTab">
-        <div class="shoutContainer"><img src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1596_small" class="shoutImage" />
-            <div id="shout5618" class="shoutModerator"><div style="text-align: left;">all borders should be fine now. we also added Kekistan on map <img src="//cdn.e-sim.org//img/emoticons/bigSmile.png"/></div>
-                <div class="shoutAuthor"><div class="flags-small Serbia"></div>
-                    <A href="profile.html?id=1"><span class="premiumStar">&#9733;</span> Admin</A>  <b style="color: #222">posted 2 days ago</b></div></div> <div id="shoutComments5618"></div>
-            <p style="clear:both"></p></div><p style="clear:both"></p>
-        <hr class="littleDashedLine"/>
-        <div class="shoutContainer"><img src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1596_small" class="shoutImage" />
-            <div id="shout5331" class="shoutModerator"><div style="text-align: left;">countries should be able to attack each other. thanks for quick notice to fix it <img src="//cdn.e-sim.org//img/emoticons/smile.png"/></div>
-                <div class="shoutAuthor"><div class="flags-small Serbia"></div>
-                    <A href="profile.html?id=1"><span class="premiumStar">&#9733;</span> Admin</A>  <b style="color: #222">posted 2 days ago</b></div></div> <div id="shoutComments5331"></div>
-            <p style="clear:both"></p></div><p style="clear:both"></p>
-        <hr class="littleDashedLine"/>
-        <div class="shoutContainer"><img src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1596_small" class="shoutImage" />
-            <div id="shout1950" class="shoutModerator"><div style="text-align: left;">there was auction bug today morning - some players could duplicate gold form auctions.
-                <br/>please dont spend the gold, moderators are working now in getting extra gold back. Spending it will make it harder <img src="//cdn.e-sim.org//img/emoticons/smile.png"/></div>
-                <div class="shoutAuthor"><div class="flags-small Serbia"></div>
-                    <A href="profile.html?id=1"><span class="premiumStar">&#9733;</span> Admin</A>  <b style="color: #222">posted 5 days ago</b></div></div> <div id="shoutComments1950"></div>
-            <p style="clear:both"></p></div><p style="clear:both"></p>
-        <hr class="littleDashedLine"/>
-        <div class="shoutContainer"><img src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1596_small" class="shoutImage" />
-            <div id="shout556" class="shoutModerator"><div style="text-align: left;">we added Georgia and Morocco <img src="//cdn.e-sim.org//img/emoticons/smile.png"/>
-                <br/>
-                <br/>
-                <br/>We will add one last country - guess which one?</div>
-                <div class="shoutAuthor"><div class="flags-small Serbia"></div>
-                    <A href="profile.html?id=1"><span class="premiumStar">&#9733;</span> Admin</A>  <b style="color: #222">posted 6 days ago</b></div></div> <div id="shoutComments556"></div>
-            <p style="clear:both"></p></div><p style="clear:both"></p>
-        <hr class="littleDashedLine"/>
-        <div class="shoutContainer"><img src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1596_small" class="shoutImage" />
-            <div id="shout424" class="shoutModerator"><div style="text-align: left;">we strongly advise you to join our <a href="https://discord.gg/TgmuDXv" target="_blank">discord channel</a>  <img src="//cdn.e-sim.org//img/emoticons/smile.png"/>
-                <br/>
-                <br/>we have support channel, server channel and national channels there. it runs in browser <img src="//cdn.e-sim.org//img/emoticons/smile.png"/></div>
-                <div class="shoutAuthor"><div class="flags-small Serbia"></div>
-                    <A href="profile.html?id=1"><span class="premiumStar">&#9733;</span> Admin</A>  <b style="color: #222">posted 6 days ago</b></div></div> <div id="shoutComments424"></div>
-            <p style="clear:both"></p></div><p style="clear:both"></p>
-        <hr class="littleDashedLine"/>
-        <div class="shoutContainer"><img src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1596_small" class="shoutImage" />
-            <div id="shout13" class="shoutModerator"><div style="text-align: left;">thanks for noticing that battles are not working - its fixed now <img src="//cdn.e-sim.org//img/emoticons/smile.png"/></div>
-                <div class="shoutAuthor"><div class="flags-small Serbia"></div>
-                    <A href="profile.html?id=1"><span class="premiumStar">&#9733;</span> Admin</A>  <b style="color: #222">posted 6 days ago</b></div></div> <div id="shoutComments13"></div>
-            <p style="clear:both"></p></div><p style="clear:both"></p>
-        <hr class="littleDashedLine"/>
-    </div>
-    <p style="clear: both"></p> </div></td>
-</tr>
-</table>
+        <div style="font-size:.8125em;" class="foundation-style columns canvaback column-margin-both column-margin-vertical foundation-radius foundation-shadow">
+            <div style="display:inline-block;width:100%;padding-bottom: 12px;">
+                <a href="http://www.forum-e-sim.org" style="color:red"><b>forum</b></a> |
+                <a href="laws.html">Laws</a> |
+                <a href="privacyPolicy.html">Privacy policy</a> |
+                <a href="staff.html">Staff</a> |
+                <a href="http://esim.wikia.com/wiki/E-Sim_Wiki"><i class='icon-info2' ></i>Wikia</a> |
+                <a href="http://tickets.e-sim.org"><i class='icon-hammer' ></i>Tickets</a> |
+                <a href="http://primera.e-sim.org"><i class='icon-earth' ></i>Primera</a> |
+                <a href="http://secura.e-sim.org"><i class='icon-domain' ></i>Secura</a> |
+                <a href="http://suna.e-sim.org"><i class='icon-earth2' ></i>Suna</a> |
+                <a href="http://refugia.e-sim.org"><i class='icon-fort' ></i>Refugia</a>  |
+                <a href="http://inferna.e-sim.org"><i class='icon-fire' ></i>Inferna</a>
 
-
-<br />
-</td>
-</div>
-<script type="text/javascript" src="//cdn.e-sim.org//js/dragresize.js"></script>
-<div class="foundation-style foundation-text-center foundation-base-font small-10 columns column-margin-both column-margin-vertical-down">
-
-    <div style="font-size:.8125em;" class="foundation-style columns canvaback column-margin-both column-margin-vertical foundation-radius foundation-shadow">
-        <div style="display:inline-block;width:100%;padding-bottom: 12px;">
-            <a href="http://www.forum-e-sim.org" style="color:red"><b>forum</b></a> |
-            <a href="laws.html">Laws</a> |
-            <a href="privacyPolicy.html">Privacy policy</a> |
-            <a href="staff.html">Staff</a> |
-            <a href="http://esim.wikia.com/wiki/E-Sim_Wiki"><i class='icon-info2' ></i>Wikia</a> |
-            <a href="http://tickets.e-sim.org"><i class='icon-hammer' ></i>Tickets</a> |
-            <a href="http://primera.e-sim.org"><i class='icon-earth' ></i>Primera</a> |
-            <a href="http://secura.e-sim.org"><i class='icon-domain' ></i>Secura</a> |
-            <a href="http://suna.e-sim.org"><i class='icon-earth2' ></i>Suna</a> |
-            <a href="http://refugia.e-sim.org"><i class='icon-fort' ></i>Refugia</a>  |
-            <a href="http://inferna.e-sim.org"><i class='icon-fire' ></i>Inferna</a>
-
-        </div>
-        <div id="footer" style="display:inline-block;width:100%;padding-bottom: 12px;">
-            Copyright© Massive Online Games FZE
-            <br>
-            <span style="font-size: 10px;color: #BBB;font-weight: 400;">
+            </div>
+            <div id="footer" style="display:inline-block;width:100%;padding-bottom: 12px;">
+                Copyright© Massive Online Games FZE
+                <br>
+                <span style="font-size: 10px;color: #BBB;font-weight: 400;">
         Al Jazeera Al Hamra, Kas Al Khaimah, United Arab Emirates
       </span>
-        </div>
-        <div style="display: inline-block;width: 100%;padding-bottom: 12px;">
+            </div>
+            <div style="display: inline-block;width: 100%;padding-bottom: 12px;">
       <span style="font-size: 16px;color: #BBB;line-height: 45px;vertical-align: top;padding-right: 16px;text-transform: uppercase;font-weight: 400;">
         Play on
       </span>
-            <a id="icon-android" href="#">
-                <i class="icon-android" style="font-size: 36px;color: #bbbbbb;"></i>
-            </a>
-            <a id="icon-apple" href="#">
-                <i class="icon-apple" style="font-size: 36px;color: #bbbbbb;"></i>
-            </a>
-            <a id="icon-windows" href="#">
-                <i class="icon-windows" style="font-size: 36px;color: #bbbbbb;"></i>
-            </a>
+                <a id="icon-android" href="#">
+                    <i class="icon-android" style="font-size: 36px;color: #bbbbbb;"></i>
+                </a>
+                <a id="icon-apple" href="#">
+                    <i class="icon-apple" style="font-size: 36px;color: #bbbbbb;"></i>
+                </a>
+                <a id="icon-windows" href="#">
+                    <i class="icon-windows" style="font-size: 36px;color: #bbbbbb;"></i>
+                </a>
+            </div>
         </div>
+
     </div>
+    <div class="lightback2" id="smallPopup"></div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-18842095-32', 'auto');
+        ga('send', 'pageview');
+    </script><script src="//cdn.e-sim.org//js/script-min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//cdn.e-sim.org//js/jquery.validate.js"></script>
+    <script src="//cdn.e-sim.org//js/foundation.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).foundation();
 
-</div>
-<div class="lightback2" id="smallPopup"></div>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-18842095-32', 'auto');
-    ga('send', 'pageview');
-</script><script src="//cdn.e-sim.org//js/script-min.js" type="text/javascript"></script>
-<script type="text/javascript" src="//cdn.e-sim.org//js/jquery.validate.js"></script>
-<script src="//cdn.e-sim.org//js/foundation.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $(document).foundation();
+            $('#citizenMessage').showTopbarMessage({background: "#0a3"});
 
-        $('#citizenMessage').showTopbarMessage({background: "#0a3"});
-
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        $('.icon-android').on('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            picoModal('' +
-                '<div style="text-align: center;">' +
-                '<div style="padding:12px">' +
-                '<a style="font-size:16px" href="http://bit.ly/androideSim">Download e-Sim Mobile App</a>' +
-                '</div>' +
-                '<a href="http://bit.ly/androideSim">' +
-                '<img style="width: 300px; height: 300px; margin: 0px auto;" src="//cdn.e-sim.org//img/qr/app_android.jpg" />' +
-                '</a>' +
-                '</div>');
         });
-        $('.icon-apple').on('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            picoModal('' +
-                '<div style="text-align: center;">' +
-                '<div style="padding:12px">' +
-                '<a style="font-size:16px" href="http://bit.ly/iOSeSim">Download e-Sim Mobile App</a>' +
-                '</div>' +
-                '<a href="http://bit.ly/iOSeSim">' +
-                '<img style="width: 300px; height: 300px; margin: 0px auto;" src="//cdn.e-sim.org//img/qr/app_ios.jpg" />' +
-                '</a>' +
-                '</div>');
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.icon-android').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                picoModal('' +
+                    '<div style="text-align: center;">' +
+                    '<div style="padding:12px">' +
+                    '<a style="font-size:16px" href="http://bit.ly/androideSim">Download e-Sim Mobile App</a>' +
+                    '</div>' +
+                    '<a href="http://bit.ly/androideSim">' +
+                    '<img style="width: 300px; height: 300px; margin: 0px auto;" src="//cdn.e-sim.org//img/qr/app_android.jpg" />' +
+                    '</a>' +
+                    '</div>');
+            });
+            $('.icon-apple').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                picoModal('' +
+                    '<div style="text-align: center;">' +
+                    '<div style="padding:12px">' +
+                    '<a style="font-size:16px" href="http://bit.ly/iOSeSim">Download e-Sim Mobile App</a>' +
+                    '</div>' +
+                    '<a href="http://bit.ly/iOSeSim">' +
+                    '<img style="width: 300px; height: 300px; margin: 0px auto;" src="//cdn.e-sim.org//img/qr/app_ios.jpg" />' +
+                    '</a>' +
+                    '</div>');
+            });
+            $('.icon-windows').on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                picoModal('' +
+                    '<div style="text-align: center;">' +
+                    '<div style="padding:12px">' +
+                    '<a style="font-size:16px" href="http://bit.ly/2afJd55">Download e-Sim Mobile App</a>' +
+                    '</div>' +
+                    '<a href="http://bit.ly/2afJd55">' +
+                    '<img style="width: 300px; height: 300px; margin: 0px auto;" src="//cdn.e-sim.org//img/qr/app_windows.jpg" />' +
+                    '</a>' +
+                    '</div>');
+            });
         });
-        $('.icon-windows').on('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            picoModal('' +
-                '<div style="text-align: center;">' +
-                '<div style="padding:12px">' +
-                '<a style="font-size:16px" href="http://bit.ly/2afJd55">Download e-Sim Mobile App</a>' +
-                '</div>' +
-                '<a href="http://bit.ly/2afJd55">' +
-                '<img style="width: 300px; height: 300px; margin: 0px auto;" src="//cdn.e-sim.org//img/qr/app_windows.jpg" />' +
-                '</a>' +
-                '</div>');
-        });
-    });
-</script>
+    </script>
 
-<script type="text/javascript">
-    (function() {
-        window._pa = window._pa || {};
-        // _pa.orderId = "myOrderId"; // OPTIONAL: attach unique conversion identifier to conversions
-        // _pa.revenue = "19.99"; // OPTIONAL: attach dynamic purchase values to conversions
-        // _pa.productId = "myProductId"; // OPTIONAL: Include product ID for use with dynamic ads
-        var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
-        pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.marinsm.com/serve/56d83e6e52d3533f95000126.js";
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
-    })();
-</script></body>
+    <script type="text/javascript">
+        (function() {
+            window._pa = window._pa || {};
+            // _pa.orderId = "myOrderId"; // OPTIONAL: attach unique conversion identifier to conversions
+            // _pa.revenue = "19.99"; // OPTIONAL: attach dynamic purchase values to conversions
+            // _pa.productId = "myProductId"; // OPTIONAL: Include product ID for use with dynamic ads
+            var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+            pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.marinsm.com/serve/56d83e6e52d3533f95000126.js";
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+        })();
+    </script></body>
 </html>
