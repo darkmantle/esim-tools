@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-4 col-sm-push-4">
+            <div class="col-xs-6 col-sm-4 col-sm-push-3">
                 <div class="form-group">
                     <select id="buy" name="buyerCurrencyId" class="form-control" v-on:change="changeCurrency">
                         <option value="64">DZD (Algeria)</option>
@@ -50,6 +50,26 @@
                     </select>
                 </div>
             </div>
+            <div class="col-xs-6 col-sm-2 col-sm-push-3">
+                <div class="form-group">
+                    <select class="form-control" v-on:change="changeResource">
+                        <option value="IRON">Iron</option>
+                        <option value="GRAIN">Grain</option>
+                        <option value="OIL">Oil</option>
+                        <option value="STONE">Stone</option>
+                        <option value="WOOD">Wood</option>
+                        <option value="DIAMONDS">Diamonds</option>
+                        <option value="WEAPON">Weapon</option>
+                        <option value="HOUSE">House</option>
+                        <option value="GIFT">Gift</option>
+                        <option value="FOOD">Food</option>
+                        <option value="TICKET">Ticket</option>
+                        <option value="DEFENSE_SYSTEM">Defense System</option>
+                        <option value="HOSPITAL">Hospital</option>
+                        <option value="ESTATE">Estate</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6 col-md-push-3">
@@ -81,18 +101,20 @@
         data: function () {
             return {
                 list: [],
+                country: 6,
+                resource: "IRON"
             }
         },
         mounted() {
-            this.fetch(6);
+            this.fetch(this.resource, this.country);
         },
         methods: {
-            fetch: function (country) {
+            fetch: function (resource, country) {
                 const f = this;
 
-                this.$http.get('/api/product/grain/' + country + '/1').then(function (response) {
+                this.$http.get('/api/product/'+resource+'/' + country + '/1').then(function (response) {
                     const data = response.data;
-                    f.$http.get('/api/exchange/0/'+country).then(function (response) {
+                    f.$http.get('/api/exchange/0/' + country).then(function (response) {
                         console.log(response.data);
                         for (let i = 0; i < data.length; i++) {
                             data[i].goldPrice = data[i].price * response.data[0].rate;
@@ -103,7 +125,12 @@
                 })
             },
             changeCurrency: function (event) {
-                this.fetch(event.target.value);
+                this.country = event.target.value;
+                this.fetch(this.resource, this.country);
+            },
+            changeResource: function(event) {
+                this.resource = event.target.value;
+                this.fetch(this.resource, this.country);
             }
         }
     }

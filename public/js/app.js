@@ -43983,22 +43983,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            list: []
+            list: [],
+            country: 6,
+            resource: "IRON"
         };
     },
     mounted: function mounted() {
-        this.fetch(6);
+        this.fetch(this.resource, this.country);
     },
 
     methods: {
-        fetch: function fetch(country) {
+        fetch: function fetch(resource, country) {
             var f = this;
 
-            this.$http.get('/api/product/grain/' + country + '/1').then(function (response) {
+            this.$http.get('/api/product/' + resource + '/' + country + '/1').then(function (response) {
                 var data = response.data;
                 f.$http.get('/api/exchange/0/' + country).then(function (response) {
                     console.log(response.data);
@@ -44010,7 +44032,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         changeCurrency: function changeCurrency(event) {
-            this.fetch(event.target.value);
+            this.country = event.target.value;
+            this.fetch(this.resource, this.country);
+        },
+        changeResource: function changeResource(event) {
+            this.resource = event.target.value;
+            this.fetch(this.resource, this.country);
         }
     }
 });
@@ -44025,7 +44052,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-xs-12 col-sm-4 col-sm-push-4"
+    staticClass: "col-xs-6 col-sm-4 col-sm-push-3"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('select', {
@@ -44210,7 +44237,72 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "56"
     }
-  }, [_vm._v("VEF (Venezuela)")])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("VEF (Venezuela)")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-6 col-sm-2 col-sm-push-3"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('select', {
+    staticClass: "form-control",
+    on: {
+      "change": _vm.changeResource
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "IRON"
+    }
+  }, [_vm._v("Iron")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GRAIN"
+    }
+  }, [_vm._v("Grain")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "OIL"
+    }
+  }, [_vm._v("Oil")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "STONE"
+    }
+  }, [_vm._v("Stone")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "WOOD"
+    }
+  }, [_vm._v("Wood")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DIAMONDS"
+    }
+  }, [_vm._v("Diamonds")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "WEAPON"
+    }
+  }, [_vm._v("Weapon")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HOUSE"
+    }
+  }, [_vm._v("House")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "GIFT"
+    }
+  }, [_vm._v("Gift")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "FOOD"
+    }
+  }, [_vm._v("Food")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "TICKET"
+    }
+  }, [_vm._v("Ticket")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "DEFENSE_SYSTEM"
+    }
+  }, [_vm._v("Defense System")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "HOSPITAL"
+    }
+  }, [_vm._v("Hospital")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ESTATE"
+    }
+  }, [_vm._v("Estate")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6 col-md-push-3"
