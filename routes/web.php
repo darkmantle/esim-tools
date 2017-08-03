@@ -13,5 +13,5 @@ use Symfony\Component\DomCrawler\Crawler;
 */
 
 Route::get('/', function() {
-    return view('home');
+    return view('product');
 });

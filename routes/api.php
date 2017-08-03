@@ -52,7 +52,7 @@ Route::get('/product/{resource}/{country}/{quality}', function ($resource, $coun
         }
     }
 
-    //return response()->json($results);
+    return response()->json($results);
 
 
 });

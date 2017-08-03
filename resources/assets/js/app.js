@@ -16,7 +16,8 @@ Vue.use(require('vue-resource'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('exchange', require('./components/Exchange.vue'));
+Vue.component('product', require('./components/Products.vue'));
 
 const app = new Vue({
     el: '#app'
