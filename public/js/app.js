@@ -43483,7 +43483,7 @@ var Component = __webpack_require__(8)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\mantl\\PhpstormProjects\\esim\\resources\\assets\\js\\components\\Exchange.vue"
+Component.options.__file = "C:\\Users\\Elite8100Sff\\PhpstormProjects\\esim-tools\\resources\\assets\\js\\components\\Exchange.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Exchange.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -43494,9 +43494,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a1d896e", Component.options)
+    hotAPI.createRecord("data-v-2e8f8617", Component.options)
   } else {
-    hotAPI.reload("data-v-0a1d896e", Component.options)
+    hotAPI.reload("data-v-2e8f8617", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -43855,7 +43855,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0a1d896e", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-2e8f8617", module.exports)
   }
 }
 
@@ -43876,7 +43876,7 @@ var Component = __webpack_require__(8)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\mantl\\PhpstormProjects\\esim\\resources\\assets\\js\\components\\Products.vue"
+Component.options.__file = "C:\\Users\\Elite8100Sff\\PhpstormProjects\\esim-tools\\resources\\assets\\js\\components\\Products.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Products.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -43887,9 +43887,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-398413ec", Component.options)
+    hotAPI.createRecord("data-v-16dc40d8", Component.options)
   } else {
-    hotAPI.reload("data-v-398413ec", Component.options)
+    hotAPI.reload("data-v-16dc40d8", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -44003,24 +44003,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             list: [],
             country: 6,
-            resource: "IRON"
+            resource: "IRON",
+            quality: 0
         };
     },
     mounted: function mounted() {
-        this.fetch(this.resource, this.country);
+        this.fetch(this.resource, this.country, this.quality);
     },
 
     methods: {
-        fetch: function fetch(resource, country) {
+        fetch: function fetch(resource, country, quality) {
             var f = this;
 
-            this.$http.get('/api/product/' + resource + '/' + country + '/1').then(function (response) {
+            this.$http.get('/api/product/' + resource + '/' + country + '/' + quality).then(function (response) {
                 var data = response.data;
                 f.$http.get('/api/exchange/0/' + country).then(function (response) {
                     console.log(response.data);
@@ -44033,11 +44046,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeCurrency: function changeCurrency(event) {
             this.country = event.target.value;
-            this.fetch(this.resource, this.country);
+            this.fetch(this.resource, this.country, this.quality);
         },
         changeResource: function changeResource(event) {
             this.resource = event.target.value;
-            this.fetch(this.resource, this.country);
+            this.fetch(this.resource, this.country, this.quality);
+        },
+        changeQuality: function changeQuality(event) {
+            this.quality = event.target.value;
+            this.fetch(this.resource, this.country, this.quality);
         }
     }
 });
@@ -44052,7 +44069,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-xs-6 col-sm-4 col-sm-push-3"
+    staticClass: "col-xs-12 col-sm-3 col-sm-offset-3"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('select', {
@@ -44238,7 +44255,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "56"
     }
   }, [_vm._v("VEF (Venezuela)")])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-xs-6 col-sm-2 col-sm-push-3"
+    staticClass: "col-xs-12 col-sm-2"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('select', {
@@ -44302,7 +44319,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "ESTATE"
     }
-  }, [_vm._v("Estate")])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Estate")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-12 col-sm-1"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('select', {
+    staticClass: "form-control",
+    on: {
+      "change": _vm.changeQuality
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "0"
+    }
+  }, [_vm._v("All")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "1"
+    }
+  }, [_vm._v("Q1")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "2"
+    }
+  }, [_vm._v("Q2")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "3"
+    }
+  }, [_vm._v("Q3")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "4"
+    }
+  }, [_vm._v("Q4")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "5"
+    }
+  }, [_vm._v("Q5")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6 col-md-push-3"
@@ -44318,7 +44368,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-398413ec", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-16dc40d8", module.exports)
   }
 }
 
