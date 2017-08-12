@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\DomCrawler\Crawler;
 
 /*
@@ -20,11 +20,16 @@ function parseName($str)
     return str_replace(" ", "", lcfirst(ucwords(strtolower($str))));
 }
 
+function baseUrl() {
+    $server = Session::get('esim_server', 'harmonia');
+    return 'http://'.$server.'.e-sim.org';
+}
+
 Route::get('/product/{resource}/{country}/{quality}', function ($resource, $country, $quality) {
     if ($country == 0) {
         $country = -1;
     }
-    $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/productMarket.html?resource='.strtoupper($resource).'&countryId='.$country.'&quality='.$quality.'&page=1'));
+    $crawler = new Crawler(file_get_contents(baseUrl().'/productMarket.html?resource='.strtoupper($resource).'&countryId='.$country.'&quality='.$quality.'&page=1'));
     //$crawler = new Crawler(file_get_contents(__DIR__ . '\test.html'));
 
     $table = $crawler->filter('.dataTable');
@@ -57,7 +62,7 @@ Route::get('/product/{resource}/{country}/{quality}', function ($resource, $coun
 
 });
 Route::get('/citizen/{id}', function ($id) {
-    $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/profile.html?id=' . $id));
+    $crawler = new Crawler(file_get_contents(baseUrl().'/profile.html?id=' . $id));
     //$crawler = new Crawler(file_get_contents(__DIR__ . '\test.html'));
 
     $citizen = new stdClass();
@@ -86,7 +91,7 @@ Route::get('/citizen/{id}', function ($id) {
 
 });
 Route::get('/exchange/{from}/{to}', function ($from, $to) {
-    $crawler = new Crawler(file_get_contents('http://harmonia.e-sim.org/monetaryMarket.html?buyerCurrencyId=' . $to . '&sellerCurrencyId=' . $from));
+    $crawler = new Crawler(file_get_contents(baseUrl().'/monetaryMarket.html?buyerCurrencyId=' . $to . '&sellerCurrencyId=' . $from));
 
     $items = array();
     $crawler = $crawler->filter('table');

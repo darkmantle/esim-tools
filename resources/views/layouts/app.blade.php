@@ -32,6 +32,22 @@
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{ ucwords(Session::get('esim_server', 'harmonia')) }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a onclick="onServerChange('primera')">Primera</a></li>
+                                <li><a onclick="onServerChange('secura')">Secura</a></li>
+                                <li><a onclick="onServerChange('suna')">Suna</a></li>
+                                <li><a onclick="onServerChange('inferna')">Inferna</a></li>
+                                <li><a onclick="onServerChange('suburbia')">Suburbia</a></li>
+                                <li><a onclick="onServerChange('harmonia')">Harmonia</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
             </div>
         </nav>
 
@@ -40,5 +56,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/server.js') }}"></script>
 </body>
 </html>

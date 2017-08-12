@@ -1,6 +1,8 @@
 <?php
 
-use Symfony\Component\DomCrawler\Crawler;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Session;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,4 +24,9 @@ Route::get('/products', function() {
 
 Route::get('/exchange', function() {
     return view('exchange');
+});
+
+Route::get('/change-server/{server}', function($server) {
+    Session::put('esim_server', $server);
+    return Session::get('esim_server');
 });

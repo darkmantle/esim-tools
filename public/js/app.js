@@ -43483,7 +43483,7 @@ var Component = __webpack_require__(8)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Elite8100Sff\\PhpstormProjects\\esim-tools\\resources\\assets\\js\\components\\Exchange.vue"
+Component.options.__file = "/Users/David/PhpstormProjects/esim-tools/resources/assets/js/components/Exchange.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Exchange.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -43876,7 +43876,7 @@ var Component = __webpack_require__(8)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "C:\\Users\\Elite8100Sff\\PhpstormProjects\\esim-tools\\resources\\assets\\js\\components\\Products.vue"
+Component.options.__file = "/Users/David/PhpstormProjects/esim-tools/resources/assets/js/components/Products.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Products.vue: functional components are not supported with templates, they should use render functions.")}
 
