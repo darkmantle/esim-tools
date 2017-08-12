@@ -43616,8 +43616,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        //this.fetch(6, 0);
-        //this.fetch(0, 6);
+        this.fetch(6, 0);
+        this.fetch(0, 6);
     },
 
     methods: {

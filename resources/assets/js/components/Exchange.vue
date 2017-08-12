@@ -102,8 +102,8 @@
             }
         },
         mounted() {
-            //this.fetch(6, 0);
-            //this.fetch(0, 6);
+            this.fetch(6, 0);
+            this.fetch(0, 6);
         },
         methods: {
             fetch: function (to, fro) {
