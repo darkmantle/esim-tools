@@ -125,7 +125,7 @@
             fetch: function (resource, country, quality) {
                 const f = this;
 
-                this.$http.get('/api/product/' + resource + '/' + country + '/' + quality).then(function (response) {
+                this.$http.get('/api/{{ Session::get('esim_server', 'harmonia') }}/product/' + resource + '/' + country + '/' + quality).then(function (response) {
                     const data = response.data;
                     f.$http.get('/api/exchange/0/' + country).then(function (response) {
                         console.log(response.data);

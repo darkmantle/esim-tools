@@ -106,7 +106,7 @@
         },
         methods: {
             fetch: function (to, fro) {
-                this.$http.get('/api/exchange/'+to+'/'+fro).then(function (response) {
+                this.$http.get('/api/{{ Session::get('esim_server', 'harmonia') }}/exchange/'+to+'/'+fro).then(function (response) {
                     if (to === 0) {
                         this.toList = response.data;
                     } else {
