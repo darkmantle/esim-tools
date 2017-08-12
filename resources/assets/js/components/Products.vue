@@ -128,7 +128,7 @@
 
                 this.$http.get('/api/'+this.server+'/product/' + resource + '/' + country + '/' + quality).then(function (response) {
                     const data = response.data;
-                    f.$http.get('/api/exchange/0/' + country).then(function (response) {
+                    f.$http.get('/api/'+this.server+'/exchange/0/' + country).then(function (response) {
                         console.log(response.data);
                         for (let i = 0; i < data.length; i++) {
                             data[i].goldPrice = data[i].price * response.data[0].rate;
