@@ -20,5 +20,5 @@ Vue.component('exchange', require('./components/Exchange.vue'));
 Vue.component('product', require('./components/Products.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });

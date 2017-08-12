@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <product></product>
+    <product server="{{ \Illuminate\Support\Facades\Session::get('esim_server', 'harmonia') }}"></product>
 @endsection

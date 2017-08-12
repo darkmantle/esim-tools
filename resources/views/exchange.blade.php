@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <exchange></exchange>
+
+    <exchange server="{{ \Illuminate\Support\Facades\Session::get('esim_server', 'harmonia') }}"></exchange>
 @endsection

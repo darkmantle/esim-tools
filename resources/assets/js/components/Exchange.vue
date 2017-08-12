@@ -94,6 +94,7 @@
 
 <script>
     export default {
+        props: ['server'],
         data: function () {
             return {
                 toList: [],
@@ -101,12 +102,12 @@
             }
         },
         mounted() {
-            this.fetch(6, 0);
-            this.fetch(0, 6);
+            //this.fetch(6, 0);
+            //this.fetch(0, 6);
         },
         methods: {
             fetch: function (to, fro) {
-                this.$http.get('/api/{{ Session::get('esim_server', 'harmonia') }}/exchange/'+to+'/'+fro).then(function (response) {
+                this.$http.get('/api/'+this.server+'/exchange/'+to+'/'+fro).then(function (response) {
                     if (to === 0) {
                         this.toList = response.data;
                     } else {

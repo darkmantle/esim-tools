@@ -43608,6 +43608,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['server'],
     data: function data() {
         return {
             toList: [],
@@ -43615,13 +43616,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.fetch(6, 0);
-        this.fetch(0, 6);
+        //this.fetch(6, 0);
+        //this.fetch(0, 6);
     },
 
     methods: {
         fetch: function fetch(to, fro) {
-            this.$http.get('/api/exchange/' + to + '/' + fro).then(function (response) {
+            this.$http.get('/api/' + this.server + '/exchange/' + to + '/' + fro).then(function (response) {
                 if (to === 0) {
                     this.toList = response.data;
                 } else {
@@ -44017,6 +44018,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['server'],
     data: function data() {
         return {
             list: [],
@@ -44033,7 +44035,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetch: function fetch(resource, country, quality) {
             var f = this;
 
-            this.$http.get('/api/product/' + resource + '/' + country + '/' + quality).then(function (response) {
+            this.$http.get('/api/' + this.server + '/product/' + resource + '/' + country + '/' + quality).then(function (response) {
                 var data = response.data;
                 f.$http.get('/api/exchange/0/' + country).then(function (response) {
                     console.log(response.data);
