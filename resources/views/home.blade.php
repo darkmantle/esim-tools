@@ -1,14 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <a href="/exchange">Exchange</a>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <a href="/products">Products</a>
-            </div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>e-Sim Tools</h1>
+            <p>Welcome! Here you will find a collection of tools designed to make your eSim journey, as well as an API that you can use to create your own tools.</p>
+            <p class="small-jumbotron-p"><b>Note: You can change server at the top-right of the page. On mobile it is on the menu dropdown.</b></p>
         </div>
     </div>
 @endsection

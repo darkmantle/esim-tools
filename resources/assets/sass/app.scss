@@ -7,3 +7,10 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Custom
+@import "bootswatch";
+
+.small-jumbotron-p {
+  font-size:18px !important;
+}
