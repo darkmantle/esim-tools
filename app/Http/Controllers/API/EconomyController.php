@@ -37,7 +37,7 @@ class EconomyController extends Controller
                     $seller = $arr[$i] . " " . $seller;
                 }
 
-                $product = new stdClass();
+                $product = new \stdClass();
                 $product->currency = $arr[0];
                 $product->price = $arr[1];
                 $product->amount = $arr[2];
