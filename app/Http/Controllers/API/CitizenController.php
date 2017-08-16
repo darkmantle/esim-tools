@@ -53,6 +53,7 @@ class CitizenController extends Controller
 
         $cit = Citizen::where('id', $id)->count();
         if ($cit == 0) {
+            $cit = new Citizen();
             $cit->id = $id;
             $cit->name = $citizen->name;
             $cit->save();
