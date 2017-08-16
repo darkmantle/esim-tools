@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Citizen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Symfony\Component\DomCrawler\Crawler;
@@ -50,7 +51,26 @@ class CitizenController extends Controller
             $citizen->party = $party->getNode(0)->nodeValue;
         }
 
+        $cit = Citizen::where('id', $id)->count();
+        if ($cit == 0) {
+            $cit->id = $id;
+            $cit->name = $citizen->name;
+            $cit->save();
+        }
+
+
         return response()->json($citizen);
 
+    }
+
+    function getByName($server, $name) {
+        $cit = Citizen::where('name', $name);
+        if ($cit->count() == 1) {
+            return $this>$this->getCitizen($server, $cit->id);
+        }
+        
+        $error = new \stdClass();
+        $error->message = "Citizen not linked";
+        return response()->json($error);
     }
 }
