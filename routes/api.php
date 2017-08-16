@@ -23,6 +23,7 @@ Route::prefix('{server}')->group(function() {
 
     // Citizen
     Route::get('/citizen/{id}', 'API\CitizenController@getCitizen');
+    Route::get('/citizen/name/{id}', 'API\CitizenController@getByName');
 
     // Political
 

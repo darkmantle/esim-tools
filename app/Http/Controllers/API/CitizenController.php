@@ -68,7 +68,7 @@ class CitizenController extends Controller
         if ($cit->count() == 1) {
             return $this>$this->getCitizen($server, $cit->id);
         }
-        
+
         $error = new \stdClass();
         $error->message = "Citizen not linked";
         return response()->json($error);
