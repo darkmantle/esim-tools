@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Gerardojbaez\Messenger\Contracts\MessageableInterface;
+use Gerardojbaez\Messenger\Traits\Messageable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MessageableInterface
 {
-    use Notifiable;
+    use Notifiable, Messageable;
 
     /**
      * The attributes that are mass assignable.

@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-Route::get('/', function() {
-    return view('home');
-});
+
+Auth::routes();
+
+Route::get('/', 'HomeController@home');
 
 Route::get('/products', function() {
     return view('product');
@@ -30,3 +31,5 @@ Route::get('/change-server/{server}', function($server) {
     Session::put('esim_server', $server);
     return Session::get('esim_server');
 });
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -37,7 +37,7 @@ class CitizenController extends Controller
         $table = $crawler->filter('.smallTableFont');
         foreach ($table->children() as $child) {
             $arr = explode(":", $child->nodeValue);
-            $name = parseName($arr[0]);
+            $name = $this->parseName($arr[0]);
             $citizen->{$name} = trim($arr[1]);
         }
 

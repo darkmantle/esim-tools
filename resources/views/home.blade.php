@@ -9,4 +9,5 @@
 
             <p><a class="btn btn-primary btn-lg" href="/docs.html" role="button">View API Docs</a></p>
     </div>
+
 @endsection
