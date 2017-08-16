@@ -67,8 +67,7 @@ class CitizenController extends Controller
     function getByName($server, $name) {
         $cit = Citizen::where('name', $name);
         if ($cit->count() == 1) {
-            print_r($cit->get()); die();
-            return $this->getCitizen($server, $cit->get());
+            return $this->getCitizen($server, $cit->first()->id);
         }
 
         $error = new \stdClass();
