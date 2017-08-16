@@ -13,7 +13,11 @@ class CreateCitizensTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('citizens', function (Blueprint $table) {
+            $table->integer('id')->unique();
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,10 +27,6 @@ class CreateCitizensTable extends Migration
      */
     public function down()
     {
-        Schema::create('citizens', function (Blueprint $table) {
-            $table->integer('id')->unique();
-            $table->string('name');
-            $table->timestamps();
-        });
+
     }
 }
