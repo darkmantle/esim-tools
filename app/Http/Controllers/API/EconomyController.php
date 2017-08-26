@@ -82,7 +82,7 @@ class EconomyController extends Controller
     }
 
     function getJobs($server, $country, $skill) {
-        $crawler = new Crawler(file_get_contents('http://'.$server.'.e-sim.org/jobMarker.html?countryId=' . $country . '&minimalSkill=' . $skill));
+        $crawler = new Crawler(file_get_contents('http://'.$server.'.e-sim.org/jobMarket.html?countryId=' . $country . '&minimalSkill=' . $skill));
 
         $rows = array();
         $titles = ['employer', 'company', '', 'minimum_skill', 'salary', ''];
