@@ -18,6 +18,7 @@ Vue.use(require('vue-resource'));
 
 Vue.component('exchange', require('./components/Exchange.vue'));
 Vue.component('product', require('./components/Products.vue'));
+Vue.component('jobs', require('./components/Jobs.vue'));
 
 const app = new Vue({
     el: '#app',

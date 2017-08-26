@@ -27,6 +27,10 @@ Route::get('/exchange', function() {
     return view('exchange');
 });
 
+Route::get('/jobs', function() {
+    return view('jobs');
+});
+
 Route::get('/change-server/{server}', function($server) {
     Session::put('esim_server', $server);
     return Session::get('esim_server');

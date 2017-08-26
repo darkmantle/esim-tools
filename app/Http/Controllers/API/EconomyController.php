@@ -83,6 +83,7 @@ class EconomyController extends Controller
 
     function getJobs($server, $country, $skill) {
         $crawler = new Crawler(file_get_contents('http://'.$server.'.e-sim.org/jobMarket.html?countryId=' . $country . '&minimalSkill=' . $skill));
+        //$crawler = new Crawler(file_get_contents(__DIR__ . '\test.html'));
 
         $rows = array();
         $titles = ['employer', 'company', '', 'minimum_skill', 'salary', ''];
@@ -100,6 +101,14 @@ class EconomyController extends Controller
             foreach ($crawler->filter('td') as $i => $node) {
                 // extract the value
                 if ($i === 5 || $i === 2) {
+                    continue;
+                }
+
+                if ($i === 4) {
+                    $split = explode(" ", trim($node->nodeValue));
+                    $tds->salary = new \stdClass();
+                    $tds->salary->amount = $split[0];
+                    $tds->salary->currency = $split[1];
                     continue;
                 }
 
