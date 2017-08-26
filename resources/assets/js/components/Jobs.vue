@@ -65,6 +65,7 @@
                     <tr>
                         <th>Seller</th>
                         <th>Amount</th>
+                        <th>Minimum Skill</th>
                         <th>Price</th>
                         <th>Gold Price</th>
                     </tr>
@@ -73,6 +74,7 @@
                     <tr v-for="task in list">
                         <td>{{ task.employer }}</td>
                         <td>{{ task.company }}</td>
+                        <td>{{ task.minimum_skill }}</td>
                         <td>{{ task.salary.amount + ' ' + task.salary.currency }}</td>
                         <td>{{ task.goldPrice }}</td>
                     </tr>
