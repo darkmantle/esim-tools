@@ -80,4 +80,36 @@ class EconomyController extends Controller
 
         return response()->json($items);
     }
+
+    function getJobs($server, $country, $skill) {
+        $crawler = new Crawler(file_get_contents('http://'.$server.'.e-sim.org/jobMarker.html?countryId=' . $country . '&minimalSkill=' . $skill));
+
+        $rows = array();
+        $titles = ['employer', 'company', '', 'minimum_skill', 'salary', ''];
+        $tr_elements = $crawler->filterXPath('//table/tr');
+        // iterate over filter results
+        foreach ($tr_elements as $j => $content) {
+            if ($j === 0) {
+                continue;
+            }
+
+            $tds = new \stdClass();
+            // create crawler instance for result
+            $crawler = new Crawler($content);
+            //iterate again
+            foreach ($crawler->filter('td') as $i => $node) {
+                // extract the value
+                if ($i === 5 || $i === 2) {
+                    continue;
+                }
+
+                $tds->{$titles[$i]} = trim($node->nodeValue);
+
+            }
+            $rows[] = $tds;
+
+        }
+
+        return response()->json($rows);
+    }
 }

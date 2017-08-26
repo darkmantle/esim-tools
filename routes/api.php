@@ -20,6 +20,7 @@ Route::prefix('{server}')->group(function() {
     // Economy
     Route::get('/product/{resource}/{country}/{quality}', 'API\EconomyController@getProducts');
     Route::get('/exchange/{from}/{to}', 'API\EconomyController@getExchange');
+    Route::get('/jobs/{country}/{skill}', 'API\EconomyController@getJobs');
 
     // Citizen
     Route::get('/citizen/{id}', 'API\CitizenController@getCitizen');
