@@ -59,12 +59,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 col-md-push-1">
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>Seller</th>
-                        <th>Amount</th>
+                        <th>Employer</th>
+                        <th>Company</th>
                         <th>Minimum Skill</th>
                         <th>Price</th>
                         <th>Gold Price</th>
