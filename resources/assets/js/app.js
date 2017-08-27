@@ -16,10 +16,11 @@ Vue.use(require('vue-resource'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('exchange', require('./components/Exchange.vue'));
-Vue.component('product', require('./components/Products.vue'));
-Vue.component('jobs', require('./components/Jobs.vue'));
+Vue.component('exchange', require('./components/economy/Exchange.vue'));
+Vue.component('product', require('./components/economy/Products.vue'));
+Vue.component('jobs', require('./components/economy/Jobs.vue'));
+Vue.component('company', require('./components/economy/Company.vue'));
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });

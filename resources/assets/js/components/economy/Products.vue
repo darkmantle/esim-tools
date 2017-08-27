@@ -52,30 +52,53 @@
             </div>
             <div class="col-xs-12 col-sm-2">
                 <div class="form-group">
-                    <select class="form-control" v-on:change="changeSkill">
-                        <option v-for="n in 51" v-bind:value="n-1">{{ n-1 }}</option>
+                    <select class="form-control" v-on:change="changeResource">
+                        <option value="IRON">Iron</option>
+                        <option value="GRAIN">Grain</option>
+                        <option value="OIL">Oil</option>
+                        <option value="STONE">Stone</option>
+                        <option value="WOOD">Wood</option>
+                        <option value="DIAMONDS">Diamonds</option>
+                        <option value="WEAPON">Weapon</option>
+                        <option value="HOUSE">House</option>
+                        <option value="GIFT">Gift</option>
+                        <option value="FOOD">Food</option>
+                        <option value="TICKET">Ticket</option>
+                        <option value="DEFENSE_SYSTEM">Defense System</option>
+                        <option value="HOSPITAL">Hospital</option>
+                        <option value="ESTATE">Estate</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-1">
+                <div class="form-group">
+                    <select class="form-control" v-on:change="changeQuality">
+                        <option value="0">All</option>
+                        <option value="1">Q1</option>
+                        <option value="2">Q2</option>
+                        <option value="3">Q3</option>
+                        <option value="4">Q4</option>
+                        <option value="5">Q5</option>
                     </select>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 col-md-push-1">
+            <div class="col-md-6 col-md-push-3">
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>Employer</th>
-                        <th>Company</th>
-                        <th>Minimum Skill</th>
+                        <th>Seller</th>
+                        <th>Amount</th>
                         <th>Price</th>
                         <th>Gold Price</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr v-for="task in list">
-                        <td>{{ task.employer }}</td>
-                        <td>{{ task.company }}</td>
-                        <td>{{ task.minimum_skill }}</td>
-                        <td>{{ task.salary.amount + ' ' + task.salary.currency }}</td>
+                        <td>{{ task.seller }}</td>
+                        <td>{{ task.amount }}</td>
+                        <td>{{ task.price }}</td>
                         <td>{{ task.goldPrice }}</td>
                     </tr>
                     </tbody>
@@ -92,25 +115,22 @@
             return {
                 list: [],
                 country: 6,
-                skill: 0
+                resource: "IRON",
+                quality: 0
             }
         },
         mounted() {
-            this.fetch(this.country, this.skill);
+            this.fetch(this.resource, this.country, this.quality);
         },
         methods: {
-            fetch: function (country, skill) {
+            fetch: function (resource, country, quality) {
                 const f = this;
 
-                // Get jobs
-                this.$http.get('/api/'+this.server+'/jobs/' + country + '/' + skill).then(function (response) {
+                this.$http.get('/api/'+this.server+'/product/' + resource + '/' + country + '/' + quality).then(function (response) {
                     const data = response.data;
-
-                    // Get exchange rates
                     f.$http.get('/api/'+this.server+'/exchange/0/' + country).then(function (response) {
-                        console.log(response.data);
                         for (let i = 0; i < data.length; i++) {
-                            data[i].goldPrice = data[i].salary.amount * response.data[0].rate;
+                            data[i].goldPrice = data[i].price * response.data[0].rate;
                         }
                         this.list = data;
                     });
@@ -119,12 +139,16 @@
             },
             changeCurrency: function (event) {
                 this.country = event.target.value;
-                this.fetch(this.country, this.skill);
+                this.fetch(this.resource, this.country, this.quality);
             },
-            changeSkill: function (event) {
-                this.skill = event.target.value;
-                this.fetch(this.country, this.skill);
+            changeResource: function (event) {
+                this.resource = event.target.value;
+                this.fetch(this.resource, this.country, this.quality);
             },
+            changeQuality: function (event) {
+                this.quality = event.target.value;
+                this.fetch(this.resource, this.country, this.quality);
+            }
         }
     }
 </script>

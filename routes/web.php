@@ -31,6 +31,10 @@ Route::get('/jobs', function() {
     return view('jobs');
 });
 
+Route::get('/company', function() {
+   return view('company');
+});
+
 Route::get('/change-server/{server}', function($server) {
     Session::put('esim_server', $server);
     return Session::get('esim_server');
