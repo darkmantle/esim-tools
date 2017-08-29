@@ -7,44 +7,46 @@
                         <h3 class="panel-title">Employee Table</h3>
                     </div>
                     <div class="panel-body">
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Skill</th>
-                                <th>Salary</th>
-                                <th>Production</th>
-                                <th>Items created</th>
-                                <th>Cost per item</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>Darkmantle</td>
-                                <td>6.00</td>
-                                <td>105.45</td>
-                                <td>1000.12</td>
-                                <td>123.12</td>
-                                <td>0.23512</td>
-                            </tr>
-                            <tr>
-                                <td>Darkmantle</td>
-                                <td>6.00</td>
-                                <td>105.45</td>
-                                <td>1000.12</td>
-                                <td>123.12</td>
-                                <td>0.23512</td>
-                            </tr>
-                            <tr>
-                                <td>Darkmantle</td>
-                                <td>6.00</td>
-                                <td>105.45</td>
-                                <td>1000.12</td>
-                                <td>123.12</td>
-                                <td>0.23512</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <div id="table" class="table-editable">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Skill</th>
+                                    <th>Salary</th>
+                                    <th>Production</th>
+                                    <th>Items created</th>
+                                    <th>Cost per item</th>
+                                    <th><span class="table-add glyphicon glyphicon-plus" v-on:click="tableAdd"></span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td contenteditable="true" class="focuser">Darkmantle</td>
+                                    <td contenteditable="true" class="focuser">6.00</td>
+                                    <td contenteditable="true" class="focuser">105.45</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>
+                                        <span class="table-remove glyphicon glyphicon-remove" onclick="tableRemove()"></span>
+                                    </td>
+                                </tr>
+                                <!-- This is our clonable table line -->
+                                <tr class="hide">
+                                    <td contenteditable="true" class="focuser">Darkmantle</td>
+                                    <td contenteditable="true" class="focuser">6.00</td>
+                                    <td contenteditable="true" class="focuser">105.45</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>
+                                        <span class="table-remove glyphicon glyphicon-remove" onclick="tableRemove()"></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,7 +79,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="type">Company Quality</label>
+                            <label for="quality">Company Quality</label>
                             <select id="quality" class="validate[required] form-control">
                                 <option value="1">Q1</option>
                                 <option value="2">Q2</option>
@@ -97,19 +99,19 @@
                         <div class="form-group col-xs-12">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">
+                                    <input type="checkbox" onchange="calculate()">
                                     Country owns it's capital
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">
+                                    <input type="checkbox" onchange="calculate()">
                                     Country controls high raw region
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="">
+                                    <input type="checkbox" onchange="calculate()">
                                     Region contains high raw
                                 </label>
                             </div>
@@ -124,7 +126,7 @@
                     <div class="panel-body">
                         <div class="form-group col-xs-12">
                             <label for="rawPrice">Price of Raw Material</label>
-                            <input type="number" class="form-control" id="rawPrice">
+                            <input type="number" class="form-control focuser" id="rawPrice">
                         </div>
                     </div>
                 </div>
@@ -135,6 +137,14 @@
 
 <script>
     export default {
+        data: function () {
+            return {
+                table: {}
+            }
+        },
+        mounted() {
+          this.table = $('#table');
+        },
         methods: {
             fetch: function (country, skill) {
             },
@@ -144,6 +154,10 @@
             changeSkill: function (event) {
                 this.skill = event.target.value;
             },
+            tableAdd: function() {
+                let $clone = this.table.find('tr.hide').clone(true).removeClass('hide table-line');
+                this.table.find('table').append($clone);
+            }
         }
     }
 </script>
