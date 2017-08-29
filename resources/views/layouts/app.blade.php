@@ -89,26 +89,6 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/server.js') }}"></script>
-<script>
-    function tableRemove() {
-        $('.table-remove').click(function () {
-            $(this).parents('tr').detach();
-        });
-    }
-
-    function calculate() {
-        console.log("Gay");
-    }
-
-    $(document).ready(function(){
-        $(".focuser").focusout(function(){
-            calculate();
-        });
-
-        $("#type, #quality").change(function() {
-            calculate();
-        })
-    });
-</script>
+@yield('javascript')
 </body>
 </html>
