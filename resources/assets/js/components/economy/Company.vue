@@ -68,13 +68,13 @@
                                     <option value="5">Diamonds</option>
                                 </optgroup>
                                 <optgroup label="Products" id="typeProduct">
-                                    <option value="0">Weapon</option>
-                                    <option value="1">Food</option>
-                                    <option value="2">Gift</option>
-                                    <option value="3">House</option>
-                                    <option value="4">Ticket</option>
-                                    <option value="5">Defense System</option>
-                                    <option value="6">Hospital</option>
+                                    <option value="6">Weapon</option>
+                                    <option value="7">Food</option>
+                                    <option value="8">Gift</option>
+                                    <option value="9">House</option>
+                                    <option value="10">Ticket</option>
+                                    <option value="11">Defense System</option>
+                                    <option value="12">Hospital</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -99,19 +99,19 @@
                         <div class="form-group col-xs-12">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" onchange="calculate()">
+                                    <input type="checkbox" onchange="calculate()" id="hasCapital">
                                     Country owns it's capital
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" onchange="calculate()">
+                                    <input type="checkbox" onchange="calculate()" id="highRawCountry">
                                     Country controls high raw region
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" onchange="calculate()">
+                                    <input type="checkbox" onchange="calculate()" id="highRawRegion">
                                     Region contains high raw
                                 </label>
                             </div>
@@ -126,7 +126,7 @@
                     <div class="panel-body">
                         <div class="form-group col-xs-12">
                             <label for="rawPrice">Price of Raw Material</label>
-                            <input type="number" class="form-control focuser" id="rawPrice">
+                            <input type="number" class="form-control focuser" id="rawPrice" value="0" step="0.1">
                         </div>
                     </div>
                 </div>
