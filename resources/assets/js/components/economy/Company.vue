@@ -8,6 +8,7 @@
                     </div>
                     <div class="panel-body">
                         <div id="table" class="table-editable">
+                            <h5>Click on cells to edit them</h5>
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -17,30 +18,19 @@
                                     <th>Production</th>
                                     <th>Items created</th>
                                     <th>Cost per item</th>
-                                    <th><span class="table-add glyphicon glyphicon-plus" v-on:click="tableAdd"></span></th>
+                                    <th class="text-center"><span class="table-add glyphicon glyphicon-plus" v-on:click="tableAdd"></span></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td contenteditable="true" class="focuser">Darkmantle</td>
-                                    <td contenteditable="true" class="focuser">6.00</td>
-                                    <td contenteditable="true" class="focuser">105.45</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>
-                                        <span class="table-remove glyphicon glyphicon-remove" onclick="tableRemove()"></span>
-                                    </td>
-                                </tr>
                                 <!-- This is our clonable table line -->
                                 <tr class="hide">
                                     <td contenteditable="true" class="focuser">Darkmantle</td>
-                                    <td contenteditable="true" class="focuser">6.00</td>
-                                    <td contenteditable="true" class="focuser">105.45</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>
+                                    <td contenteditable="true" class="focuser skill">6.00</td>
+                                    <td contenteditable="true" class="focuser salary">105.45</td>
+                                    <td class="production">0</td>
+                                    <td class="objects">0</td>
+                                    <td class="itemcost">0</td>
+                                    <td class="text-center">
                                         <span class="table-remove glyphicon glyphicon-remove" onclick="tableRemove()"></span>
                                     </td>
                                 </tr>
@@ -157,6 +147,7 @@
             tableAdd: function() {
                 let $clone = this.table.find('tr.hide').clone(true).removeClass('hide table-line');
                 this.table.find('table').append($clone);
+                calculate();
             }
         }
     }
