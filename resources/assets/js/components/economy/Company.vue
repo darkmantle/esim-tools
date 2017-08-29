@@ -24,9 +24,9 @@
                                 <tbody>
                                 <!-- This is our clonable table line -->
                                 <tr class="hide">
-                                    <td contenteditable="true" class="focuser">Darkmantle</td>
-                                    <td contenteditable="true" class="focuser skill">6.00</td>
-                                    <td contenteditable="true" class="focuser salary">105.45</td>
+                                    <td contenteditable="true" class="focuser">...</td>
+                                    <td contenteditable="true" class="focuser skill">1</td>
+                                    <td contenteditable="true" class="focuser salary">0</td>
                                     <td class="production">0</td>
                                     <td class="objects">0</td>
                                     <td class="itemcost">0</td>
