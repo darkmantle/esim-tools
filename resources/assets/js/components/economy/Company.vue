@@ -22,11 +22,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <tr>
+                                    <td><div contenteditable="true" class="focuser">...</div></td>
+                                    <td><div contenteditable="true" class="focuser skill">1</div></td>
+                                    <td><div contenteditable="true" class="focuser salary">0</div></td>
+                                    <td class="production">0</td>
+                                    <td class="objects">0</td>
+                                    <td class="itemcost">0</td>
+                                    <td class="text-center">
+                                        <span class="table-remove glyphicon glyphicon-remove" onclick="tableRemove()"></span>
+                                    </td>
+                                </tr>
                                 <!-- This is our clonable table line -->
                                 <tr class="hide">
-                                    <td contenteditable="true" class="focuser">...</td>
-                                    <td contenteditable="true" class="focuser skill">1</td>
-                                    <td contenteditable="true" class="focuser salary">0</td>
+                                    <td><div contenteditable="true" class="focuser">...</div></td>
+                                    <td><div contenteditable="true" class="focuser skill">1</div></td>
+                                    <td><div contenteditable="true" class="focuser salary">0</div></td>
                                     <td class="production">0</td>
                                     <td class="objects">0</td>
                                     <td class="itemcost">0</td>
