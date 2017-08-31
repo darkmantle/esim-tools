@@ -15,3 +15,13 @@
 .small-jumbotron-p {
   font-size:18px !important;
 }
+
+.company-page {
+  .panel-body {
+    padding-bottom: 0;
+  }
+
+  .country-panel {
+    padding-top: 0;
+  }
+}

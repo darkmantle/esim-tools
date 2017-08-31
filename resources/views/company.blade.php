@@ -12,13 +12,21 @@
             });
         }
 
-        function calculate() {
+        function getCompanyInfo() {
             const type = $('#type').val() * 1;
             const quality = $('#quality').val() *1;
             const hasCapital = $('#hasCapital').is(":checked");
             const highRawCountry = $('#highRawCountry').is(":checked");
             const highRawRegion = $('#highRawRegion').is(":checked");
             const rawPrice = $('#rawPrice').val();
+
+            console.log(1);
+
+
+            return [type, quality, hasCapital, highRawCountry, highRawRegion, rawPrice];
+        }
+        function calculate() {
+            [type, quality, hasCapital, highRawCountry, highRawRegion, rawPrice] = getCompanyInfo();
 
             var E = 1;
             var N = 1;

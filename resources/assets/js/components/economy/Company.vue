@@ -1,5 +1,15 @@
 <template>
-    <div class="container">
+    <div class="container company-page">
+        <div class="row">
+            <div class="col-xs-7">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name your Company">
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <button type="submit" class="btn btn-info">Save</button>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-8">
                 <div class="panel panel-default">
@@ -23,18 +33,6 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td><div contenteditable="true" class="focuser">...</div></td>
-                                    <td><div contenteditable="true" class="focuser skill">1</div></td>
-                                    <td><div contenteditable="true" class="focuser salary">0</div></td>
-                                    <td class="production">0</td>
-                                    <td class="objects">0</td>
-                                    <td class="itemcost">0</td>
-                                    <td class="text-center">
-                                        <span class="table-remove glyphicon glyphicon-remove" onclick="tableRemove()"></span>
-                                    </td>
-                                </tr>
-                                <!-- This is our clonable table line -->
-                                <tr class="hide">
                                     <td><div contenteditable="true" class="focuser">...</div></td>
                                     <td><div contenteditable="true" class="focuser skill">1</div></td>
                                     <td><div contenteditable="true" class="focuser salary">0</div></td>
@@ -96,8 +94,8 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Country Information</h3>
                     </div>
-                    <div class="panel-body">
-                        <div class="form-group col-xs-12">
+                    <div class="panel-body country-panel">
+                        <div class="form-group">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" onchange="calculate()" id="hasCapital">
@@ -125,7 +123,7 @@
                         <h3 class="panel-title">Pricing Information</h3>
                     </div>
                     <div class="panel-body">
-                        <div class="form-group col-xs-12">
+                        <div class="form-group">
                             <label for="rawPrice">Price of Raw Material</label>
                             <input type="number" class="form-control focuser" id="rawPrice" value="0" step="0.1">
                         </div>
@@ -156,8 +154,9 @@
                 this.skill = event.target.value;
             },
             tableAdd: function() {
-                let $clone = this.table.find('tr.hide').clone(true).removeClass('hide table-line');
-                this.table.find('table').append($clone);
+                const size = this.table.find('tr').length;
+                const clone = this.table.find('tr').clone(true);
+                this.table.find('table').append(clone[size-1]);
                 calculate();
             }
         }
