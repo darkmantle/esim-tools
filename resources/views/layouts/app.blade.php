@@ -37,6 +37,7 @@
                             <li><a href="/exchange">Exchange</a></li>
                             <li><a href="/products">Products</a></li>
                             <li><a href="/jobs">Job Offers</a></li>
+                            <li><a href="/company">Company Calculator</a></li>
                         </ul>
                     </li>
                 </ul>
