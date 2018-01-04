@@ -21,6 +21,7 @@ Route::prefix('{server}')->group(function() {
     Route::get('/product/{resource}/{country}/{quality}', 'API\EconomyController@getProducts');
     Route::get('/exchange/{from}/{to}', 'API\EconomyController@getExchange');
     Route::get('/jobs/{country}/{skill}', 'API\EconomyController@getJobs');
+    Route::get('/auctions/{status}/{sorting}/{page}', 'API\EconomyController@getAuctions');
 
     // Citizen
     Route::get('/citizen/{id}', 'API\CitizenController@getCitizen');
