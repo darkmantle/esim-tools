@@ -30,4 +30,5 @@ Route::prefix('{server}')->group(function() {
     // Political
 
     // Military
+	Route::get('/battle/{country}', 'API\BattleController@getAll');
 });

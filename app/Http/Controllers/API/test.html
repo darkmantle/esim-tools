@@ -391,2378 +391,410 @@
     </div>
     <div class="foundation-style column-margin-both column-margin-vertical column small-8 foundation-text-center no-style">
         <td valign="top" colspan="2" style="text-align: center">
+            <h1><span></span>Battles</h1>
+
             <script type="text/javascript" src="//cdn.e-sim.org//js/jquery.plugin.js"></script>
             <script type="text/javascript" src="//cdn.e-sim.org//js/jquery.countdown2.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('.battleDiv').on('click', function(event) {
+                        if (event.ctrlKey==0 && event.shiftKey==0){
+                            window.location = ""+$(this).data('link');
+                        }
+                    });
+                });
+            </script>
 
-            <style>
-                .headerSection{
-                    background: #303132;
-                    line-height: 50px;
-                    text-shadow: none;
-                    color: #fff;
-                    border: 5px solid #eaeaea;
-                    outline: 1px solid #303132;
-                    margin-top: 0;
+            <div  style="width:350px;" class="testDivblue "><form id="battlesViewForm" class="rocketBg" action="battles.html" method="GET"><b>Country:</b>
+                <select id="countryId" name="countryId" style="width:120px;"><option value="-1" selected="selected">All countries</option><option value="64">Algeria</option><option value="24">Argentina</option><option value="131">Armenia</option><option value="13">Bosnia and Herzegovina</option><option value="23">Brazil</option><option value="10">Bulgaria</option><option value="119">Cambodia</option><option value="28">China</option><option value="46">Colombia</option><option value="156">Cyprus</option><option value="51">Czech Republic</option><option value="57">Egypt</option><option value="53">Estonia</option><option value="4">France</option><option value="133">Georgia</option><option value="3">Germany</option><option value="8">Hungary</option><option value="165">Iceland</option><option value="34">India</option><option value="29">Indonesia</option><option value="30">Iran</option><option value="38">Ireland</option><option value="33">Israel</option><option value="7">Italy</option><option value="778">Kekistan</option><option value="19">Lithuania</option><option value="72">Morocco</option><option value="41">Pakistan</option><option value="44">Peru</option><option value="54">Philippines</option><option value="1">Poland</option><option value="18">Portugal</option><option value="9">Romania</option><option value="2">Russia</option><option value="11">Serbia</option><option value="49">Slovakia</option><option value="5">Spain</option><option value="32">Taiwan</option><option value="80">Tunisia</option><option value="22">Turkey</option><option value="6">United Kingdom</option><option value="26">USA</option><option value="56">Venezuela</option></select><b style="margin-left:20px;">Sorting:</b>
+                <select id="sorting" name="sorting" style="width:120px;"><option value="BY_START_TIME">Sorting by start time</option><option value="BY_SUBSTIDY_SIZE">Sorting by subsidy size</option><option value="BY_TOTAL_DAMAGE" selected="selected">Sorting by total damage</option></select><b style="margin-left:20px;">Filter type:</b>
+                <select id="filter" name="filter" style="width:100px;"><option value="NONE" selected="selected">All battles</option><option value="NORMAL">Regular Wars</option><option value="RESISTANCE">Resistance Wars</option><option value="CIVIL_WAR">Civil Wars</option><option value="EVENT">Events</option><option value="PRACTICE_BATTLE">Practice battle</option><option value="SAILORS_WEEK">Sailor&#39;s week</option><option value="REBELS_WEEK">Rebel&#39;s week</option><option value="SUBSIDIZED">Subsidized</option></select><br/>
+                <input type="submit" value="Show battles"/>
+
+            </form><p style="clear: both"></p> </div><br/>
+
+            <style type="text/css">
+                #battlesTable > tbody > tr > td:nth-child(2) {
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+                .battleDiv {
+                    width: auto;
+                }
+                .battleDiv > div:nth-child(1) {
+                    width: 60px;
+                    font-size: 11px;
+                    font-weight: normal;
+                }
+                .battleDiv > div:nth-child(3) {
+                    width: 60px;
+                    font-size: 11px;
+                    font-weight: normal;
+                }
+                #battlesTable > tbody > tr:first-child > td {
+                    font-size: 13px;
+                }
+                #battlesTable > tbody > tr > td > div > div.battleDiv > div:last-child {
+                    width: 200px !important;
                 }
             </style>
 
-            <div  style="width:500px;padding:0" class="testDivblue "><h1 class="headerSection"><span></span>Auctions</h1>
-                <style>
-                    .siSelection {display:inline-block;}
-                    .siSelection .selected {box-shadow:0 0 1px #242448,0 0 2px #242448,0 0 4px #242448;}
-                    .checkboxlabel, input[type=checkbox] {cursor:pointer;}
-                    .selectionDiv {
-
-                        background-color: rgba(0,0,0,0.1) !important;
-                        border:1px solid rgba(0,0,0,0.2) !important;
-
-                        border-radius:8px;
-                        display:inline-block;
-                        vertical-align:top;
-                        margin:0 10px 4px 10px;
-                        width:230px;
-                    }
-                    .selectionListDiv {
-                        padding:4px 0 4px 0;
-                        display:inline-block;
-                        vertical-align:top;
-                        text-align:left;
-                    }
-                    .selectionHeader {
-
-                        background-color: rgba(0,0,0,0.2) !important;
-
-                        display:table-cell;
-                        height:40px;
-                        width:230px;
-                        vertical-align: middle;
-                    }
-
-                    .selectionDivWhide {
-
-                        background-color: rgba(0,0,0,0.1) !important;
-                        border:1px solid rgba(0,0,0,0.2) !important;
-
-                        border-radius:8px;
-                        display:inline-block;
-                        vertical-align:top;
-                        margin:0 10px 4px 10px;
-                        width:360px;
-                    }
-                    .selectionListDivWhide {
-                        padding:4px 22px 4px 22px;
-                        max-width:120px;
-                        display:inline-block;
-                        vertical-align:top;
-                        text-align:left;
-                    }
-                    .selectionHeaderWhide {
-
-                        background-color: rgba(0,0,0,0.2) !important;
-
-                        display:table-cell;
-                        height:40px;
-                        width:360px;
-                        vertical-align: middle;
-                    }
-                    .selectionDivThin {
-
-                        background-color: rgba(0,0,0,0.1) !important;
-                        border:1px solid rgba(0,0,0,0.2) !important;
-
-                        border-radius:8px;
-                        display:inline-block;
-                        vertical-align:top;
-                        margin:0 10px 4px 10px;
-                        width:160px;
-                    }
-                    .selectionListDivThin {
-                        padding:4px 22px 4px 22px;
-                        max-width:80px;
-                        display:inline-block;
-                        vertical-align:top;
-                        text-align:left;
-                    }
-                    .selectionHeaderThin {
-
-                        background-color: rgba(0,0,0,0.2) !important;
-
-                        display:table-cell;
-                        height:40px;
-                        width:160px;
-                        vertical-align: middle;
-                    }
-
-                    .buttonAny {
-                        padding:1px 5px;
-                        margin:0 11px;
-                        color:#f2f2f2;
-                        text-shadow:0 0 1px black, 0 0 3px blask;
-                        font-size:11px;
-                        height:17px;
-                        cursor:pointer;
-                        border-radius:4px;
-                        background:linear-gradient(to bottom, #343434 0px, #2d2d2d 100%) repeat scroll 0 0 #343434;
-                        box-shadow:0 0 2px rgba(255,255,255,0.3);
-                    }
-
-                    .afTwoColumns {
-                        column-count:2;
-                        -moz-column-count:2;
-                        -webkit-column-count:2;
-                        -webkit-column-gap:44px;
-                        -moz-column-gap:44px;
-                        column-gap:44px;
-                    }
-                </style>
-
-                <form id="auctionForm" action="auctions.html" method="GET">
-
-                    <b>Type of auction</b>
-                    <select name="type">
-                        <option value="null" selected="selected">Any</option>
-                        <option value="COMPANY" >Companies</option>
-                        <option value="EQUIPMENT" >Equipment</option>
-                        <option value="SPECIAL_ITEM" >Special item</option>
-                    </select>
-
-                    <b style="margin-left:20px;">Progress</b>
-                    <select name="status">
-                        <option value="IN_PROGRESS" >In progress</option>
-                        <option value="CLOSED" >Closed</option>
-                        <option value="SOLD" selected="selected">Sold</option>
-                    </select>
-
-                    <b style="margin-left:20px;">Sorting</b>
-                    <select name="equipmentSorting">
-                        <option value="TIME" selected="selected">Time remaining</option>
-                        <option value="PRICE" >Price</option>
-                        <option value="TOTAL_BIDS" >Total bids</option>
-                    </select>
-                    <br>
-
-                    <div class="companyAuctions selectionDivThin" style="display:none;">
-                        <div class="selectionHeaderThin">
-                            <b class="companyAuctions">Quality</b>
-                            <button type="button" id="anyCompanyQuality" class="buttonAny">Any</button>
-                        </div>
-                        <div class="selectionListDivThin">
-                            <input type="checkbox" class="smallerBox" id="compQ_1" name="compQ_1" value="1"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compQ_1">Q1</label><br>
-                            <input type="checkbox" class="smallerBox" id="compQ_2" name="compQ_2" value="2"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compQ_2">Q2</label><br>
-                            <input type="checkbox" class="smallerBox" id="compQ_3" name="compQ_3" value="3"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compQ_3">Q3</label><br>
-                            <input type="checkbox" class="smallerBox" id="compQ_4" name="compQ_4" value="4"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compQ_4">Q4</label><br>
-                            <input type="checkbox" class="smallerBox" id="compQ_5" name="compQ_5" value="5"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compQ_5">Q5</label><br>
-                        </div>
-                    </div>
-                    <div class="companyAuctions selectionDivWhide" style="display:none;">
-                        <div class="selectionHeaderWhide">
-                            <b class="companyAuctions">Product</b>
-                            <button type="button" id="anyCompanyResource" class="buttonAny">Any</button>
-                        </div>
-                        <div class="selectionListDivWhide">
-                            <input type="checkbox" class="smallerBox" id="compR_IRON" name="compR_IRON" value="IRON"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_IRON">Iron</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_GRAIN" name="compR_GRAIN" value="GRAIN"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_GRAIN">Grain</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_OIL" name="compR_OIL" value="OIL"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_OIL">Oil</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_STONE" name="compR_STONE" value="STONE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_STONE">Stone</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_WOOD" name="compR_WOOD" value="WOOD"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_WOOD">Wood</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_DIAMONDS" name="compR_DIAMONDS" value="DIAMONDS"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_DIAMONDS">Diamonds</label><br>
-                        </div>
-                        <div class="selectionListDivWhide">
-                            <input type="checkbox" class="smallerBox" id="compR_FOOD" name="compR_FOOD" value="FOOD"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_FOOD">Food</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_GIFT" name="compR_GIFT" value="GIFT"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_GIFT">Gift</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_WEAPON" name="compR_WEAPON" value="WEAPON"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_WEAPON">Weapon</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_TICKET" name="compR_TICKET" value="TICKET"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_TICKET">Ticket</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_HOUSE" name="compR_HOUSE" value="HOUSE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_HOUSE">House</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_ESTATE" name="compR_ESTATE" value="ESTATE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_ESTATE">Estate</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_DEFENSE_SYSTEM" name="compR_DEFENSE_SYSTEM" value="DEFENSE_SYSTEM"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_DEFENSE_SYSTEM">Defense System</label><br>
-                            <input type="checkbox" class="smallerBox" id="compR_HOSPITAL" name="compR_HOSPITAL" value="HOSPITAL"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="compR_HOSPITAL">Hospital</label><br>
-                        </div>
-                    </div>
-
-                    <div class="equipmentAuctions selectionDiv" style="display:none;">
-                        <div class="selectionHeader">
-                            <b class="equipmentAuctions">Quality</b>
-                            <button type="button" id="anyEquipmentQuality" class="buttonAny">Any</button>
-                        </div>
-                        <div class="selectionListDiv" class="afTwoColumns">
-                            <input type="checkbox" class="smallerBox" id="eqQ_Q1" name="eqQ_Q1" value="Q1"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqQ_Q1">Q1</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqQ_Q2" name="eqQ_Q2" value="Q2"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqQ_Q2">Q2</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqQ_Q3" name="eqQ_Q3" value="Q3"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqQ_Q3">Q3</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqQ_Q4" name="eqQ_Q4" value="Q4"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqQ_Q4">Q4</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqQ_Q5" name="eqQ_Q5" value="Q5"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqQ_Q5">Q5</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqQ_Q6" name="eqQ_Q6" value="Q6"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqQ_Q6">Q6</label><br>
-                        </div>
-                    </div>
-                    <div class="equipmentAuctions selectionDiv" style="display:none;">
-                        <div class="selectionHeader">
-                            <b style="margin-left:12px;">Slot</b>
-                            <button type="button" id="anyEquipmentSlot" class="buttonAny">Any</button>
-                        </div>
-                        <div class="selectionListDiv">
-                            <input type="checkbox" class="smallerBox" id="eqSlot_OFFHAND" name="eqSlot_OFFHAND" value="OFFHAND"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_OFFHAND">Offhand</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqSlot_HELMET" name="eqSlot_HELMET" value="HELMET"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_HELMET">Helmet</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqSlot_PERSONAL_ARMOR" name="eqSlot_PERSONAL_ARMOR" value="PERSONAL_ARMOR"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_PERSONAL_ARMOR">Personal Armor</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqSlot_VISION" name="eqSlot_VISION" value="VISION"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_VISION">Vision</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqSlot_WEAPON_UPGRADE" name="eqSlot_WEAPON_UPGRADE" value="WEAPON_UPGRADE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_WEAPON_UPGRADE">Weapon upgrade</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqSlot_PANTS" name="eqSlot_PANTS" value="PANTS"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_PANTS">Pants</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqSlot_SHOES" name="eqSlot_SHOES" value="SHOES"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_SHOES">Shoes</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqSlot_LUCKY_CHARM" name="eqSlot_LUCKY_CHARM" value="LUCKY_CHARM"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqSlot_LUCKY_CHARM">Lucky charm</label><br>
-                        </div>
-                    </div>
-                    <div class="equipmentAuctions selectionDiv" style="display:none;">
-                        <div class="selectionHeader">
-                            <b style="margin-left:12px;">Parameters</b>
-                            <button type="button" id="anyEquipmentParameter" class="buttonAny">Any</button>
-                            <div class="selectionListDiv" style="display:none !important">
-                                for parent: style="height:78px;"
-                                <input type="radio" name="eqParSearch" value="onlySelected" id="onlySelected" style="margin:0 0 0 8px !important;">
-                                <label class="checkboxlabel" for="onlySelected">only selected </label><br>
-                                <input type="radio" name="eqParSearch" value="withSelected" id="withSelected" style="margin:0 0 0 8px !important;">
-                                <label class="checkboxlabel" for="withSelected">with selected </label>
+            <table id="battlesTable" style="width: 100%; margin-left: auto; margin-right: auto;" class="dataTable paddedTable" >
+                <tr>
+                    <td id="battlesTable1" style="width: 450px">
+                        Battle<br/>
+                        (defender vs. attacker)</td>
+                    <td style="width: 60px">Score</td>
+                    <td style="width: 100px">Total damage done</td>
+                    <td style="width: 80px">Battle start</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div data-link="battle.html?id=4700" class="battleDiv" style="min-height:3.5rem;cursor:pointer;">
+                            <div style="width:20%;">
+                                <div class="xflagsMedium xflagsMedium-Morocco"></div>
+                            </div>
+                            <div style="width:60%;">
+                                <div class="progress foundation-center">
+                                    <div style="width:100%;background:url('//cdn.e-sim.org//img/stripes.png') repeat scroll 0 0px, linear-gradient(to bottom, #BA5051 0px, #DB2024 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;" class="smallhelp bar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                                        <div style="width: 53.82306641594031%;margin: 0;" class="ui-progressbar-value ui-widget-header ui-corner-left"></div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;display:inline-block;">
+                                    <br>
+                                    <a href="battle.html?id=4700">Nile Delta</a>
+                                    <br />
+                                    <span id="fundraisingTimer0_2"></span>
+                                </div>
+                            </div>
+                            <div style="width:20%;text-align:center;">
+                                <div class="xflagsMedium xflagsMedium-Israel"></div>
+                            </div>
+                            <div style="width:100%;font-weight:normal;text-align:center;">
+                                <span>
+                                    Subsidies</span>
+                                <br />
+                                <div style="width:45%;display:inline-block">
+                                    <span>MA: none</span>
+                                </div>
+                                <div style="width:45%;display:inline-block">
+                                    <span>IL: none</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="selectionListDiv">
-                            <input type="checkbox" class="smallerBox" id="eqPar_REDUCE_MISS_CHANCE" name="eqPar_REDUCE_MISS_CHANCE" value="REDUCE_MISS_CHANCE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_REDUCE_MISS_CHANCE">Miss chance reduction</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_INCREASE_CRITICAL_CHANCE" name="eqPar_INCREASE_CRITICAL_CHANCE" value="INCREASE_CRITICAL_CHANCE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_INCREASE_CRITICAL_CHANCE">Increased critical chance</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_INCREASE_MAXIMUM_DAMAGE" name="eqPar_INCREASE_MAXIMUM_DAMAGE" value="INCREASE_MAXIMUM_DAMAGE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_INCREASE_MAXIMUM_DAMAGE">Increased maximum damage</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_INCREASE_DAMAGE" name="eqPar_INCREASE_DAMAGE" value="INCREASE_DAMAGE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_INCREASE_DAMAGE">Increased damage</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_CHANCE_TO_AVOID_DAMAGE" name="eqPar_CHANCE_TO_AVOID_DAMAGE" value="CHANCE_TO_AVOID_DAMAGE"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_CHANCE_TO_AVOID_DAMAGE">Chance to avoid damage</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_INCREASE_STRENGTH" name="eqPar_INCREASE_STRENGTH" value="INCREASE_STRENGTH"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_INCREASE_STRENGTH">Increased strength</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_INCREASED_HIT" name="eqPar_INCREASED_HIT" value="INCREASED_HIT"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_INCREASED_HIT">Increased hit</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_INCREASED_ECONOMY_SKILL" name="eqPar_INCREASED_ECONOMY_SKILL" value="INCREASED_ECONOMY_SKILL"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_INCREASED_ECONOMY_SKILL">Increased economy skill</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_FREE_FLIGHT" name="eqPar_FREE_FLIGHT" value="FREE_FLIGHT"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_FREE_FLIGHT">Chance for free flight</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_LESS_WEAPONS_PER_BERSERK" name="eqPar_LESS_WEAPONS_PER_BERSERK" value="LESS_WEAPONS_PER_BERSERK"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_LESS_WEAPONS_PER_BERSERK">Chance to use less weapons for Berserk</label><br>
-                            <input type="checkbox" class="smallerBox" id="eqPar_FIND_A_WEAPON" name="eqPar_FIND_A_WEAPON" value="FIND_A_WEAPON"  style="margin:1px !important;line-height:10px !important;" />
-                            <label class="checkboxlabel" for="eqPar_FIND_A_WEAPON">Chance to find a weapon</label><br>
+
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                var fundraisingTimer0_2 = new Date();
+                                fundraisingTimer0_2.setHours(fundraisingTimer0_2.getHours() + 0);
+                                fundraisingTimer0_2.setMinutes(fundraisingTimer0_2.getMinutes() + 28);
+                                fundraisingTimer0_2.setSeconds(fundraisingTimer0_2.getSeconds() + 4);
+                                $('#fundraisingTimer0_2').countdown({
+                                    until: fundraisingTimer0_2,
+                                    compact: true,
+                                    format: 'dHMS',
+                                    expiryText: 'This round is already closed'
+                                });
+                            });
+                        </script>
+                    </td>
+                    <td> 1:2</td>
+                    <td> 43,175,158</td>
+                    <td> 7 hours ago</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div data-link="battle.html?id=4698" class="battleDiv" style="min-height:3.5rem;cursor:pointer;">
+                            <div style="width:20%;">
+                                <div class="xflagsMedium xflagsMedium-Indonesia"></div>
+                            </div>
+                            <div style="width:60%;">
+                                <div class="progress foundation-center">
+                                    <div style="width:100%;background:url('//cdn.e-sim.org//img/stripes.png') repeat scroll 0 0px, linear-gradient(to bottom, #BA5051 0px, #DB2024 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;" class="smallhelp bar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                                        <div style="width: 100.0%;margin: 0;" class="ui-progressbar-value ui-widget-header ui-corner-left"></div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;display:inline-block;">
+                                    <br>
+                                    <a href="battle.html?id=4698">Punjab</a>
+                                    <br />
+                                    <span id="fundraisingTimer1_2"></span>
+                                </div>
+                            </div>
+                            <div style="width:20%;text-align:center;">
+                                <div class="xflagsMedium xflagsMedium-Russia"></div>
+                            </div>
+                            <div style="width:100%;font-weight:normal;text-align:center;">
+                                <span>
+                                    Subsidies</span>
+                                <br />
+                                <div style="width:45%;display:inline-block">
+                                    <span>ID: none</span>
+                                </div>
+                                <div style="width:45%;display:inline-block">
+                                    <span>RU: none</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="specialItemAuctions">
-                        <b>Type</b>
-                        <select name="specialItemType2" >
-                            <option value="ANY" selected="selected">Any</option>
-                            <option value="STEROIDS" >Steroids</option>
-                            <option value="EXTRA_VACATIONS" >Extra vacations</option>
-                            <option value="EXTRA_SPA" >Extra spa</option>
-                            <option value="TANK" >Tank</option>
-                            <option value="BUNKER" >Bunker</option>
-                            <option value="SEWER_GUIDE" >Sewer guide</option>
-                            <option value="PAIN_DEALER" >Pain dealer</option>
-                            <option value="BANDAGE" >Bandage</option>
-                            <option value="CAMOUFLAGE" >Camouflage</option>
-                        </select>
-                    </div>
-                    <br>
-                    <input type="submit" value="View auctions">
-                </form>
-
-                <script type="text/javascript">
-                    function funk() {
-                        var d = $("select[name=type] option:selected").val();
-                        $(".equipmentAuctions").hide();
-                        $(".companyAuctions").hide();
-                        $(".specialItemAuctions").hide();
-                        if(d == "COMPANY"){
-                            $(".companyAuctions").show();
-                        }
-                        else {
-                            if(d == "EQUIPMENT"){
-                                $(".equipmentAuctions").show();
-                            } else {
-                                if(d == "SPECIAL_ITEM") {
-                                    $(".specialItemAuctions").show();
-                                } else {
-
-                                }
-                            }
-                        }
-                    }
-                    $(document).ready(function() {
-                        funk();
-                        $("select[name=type]").change(function(){
-                            funk();
-                        });
-                        $("#anyCompanyQuality").on("click", function(){
-                            $("#compQ_1").attr('checked', false);$("#compQ_2").attr('checked', false);$("#compQ_3").attr('checked', false);$("#compQ_4").attr('checked', false);$("#compQ_5").attr('checked', false);
-                        });
-                        $("#anyCompanyResource").on("click", function(){
-                            $("#compR_IRON").attr('checked', false);$("#compR_GRAIN").attr('checked', false);$("#compR_OIL").attr('checked', false);$("#compR_STONE").attr('checked', false);$("#compR_WOOD").attr('checked', false);$("#compR_DIAMONDS").attr('checked', false);$("#compR_FOOD").attr('checked', false);$("#compR_GIFT").attr('checked', false);$("#compR_WEAPON").attr('checked', false);$("#compR_TICKET").attr('checked', false);$("#compR_HOUSE").attr('checked', false);$("#compR_ESTATE").attr('checked', false);$("#compR_DEFENSE_SYSTEM").attr('checked', false);$("#compR_HOSPITAL").attr('checked', false);
-                        });
-                        $("#anyEquipmentSlot").on("click", function(){
-                            $("#eqSlot_OFFHAND").attr('checked', false);$("#eqSlot_HELMET").attr('checked', false);$("#eqSlot_PERSONAL_ARMOR").attr('checked', false);$("#eqSlot_VISION").attr('checked', false);$("#eqSlot_WEAPON_UPGRADE").attr('checked', false);$("#eqSlot_PANTS").attr('checked', false);$("#eqSlot_SHOES").attr('checked', false);$("#eqSlot_LUCKY_CHARM").attr('checked', false);
-                        });
-                        $("#anyEquipmentParameter").on("click", function(){
-                            $("#eqPar_REDUCE_MISS_CHANCE").attr('checked', false);$("#eqPar_INCREASE_CRITICAL_CHANCE").attr('checked', false);$("#eqPar_INCREASE_MAXIMUM_DAMAGE").attr('checked', false);$("#eqPar_INCREASE_DAMAGE").attr('checked', false);$("#eqPar_CHANCE_TO_AVOID_DAMAGE").attr('checked', false);$("#eqPar_INCREASE_STRENGTH").attr('checked', false);$("#eqPar_INCREASED_HIT").attr('checked', false);$("#eqPar_INCREASED_ECONOMY_SKILL").attr('checked', false);$("#eqPar_FREE_FLIGHT").attr('checked', false);$("#eqPar_LESS_WEAPONS_PER_BERSERK").attr('checked', false);$("#eqPar_FIND_A_WEAPON").attr('checked', false);
-                        });
-                        $("#anyEquipmentQuality").on("click", function(){
-                            $("#eqQ_Q1").attr('checked', false);$("#eqQ_Q2").attr('checked', false);$("#eqQ_Q3").attr('checked', false);$("#eqQ_Q4").attr('checked', false);$("#eqQ_Q5").attr('checked', false);$("#eqQ_Q6").attr('checked', false);
-                        });
-                    });
-                </script><p style="clear: both"></p> </div><div>
-            <img align="absmiddle" src="//cdn.e-sim.org//img/wiki.png"> <a target="_blank" style="font-weight: bold" href="http://wiki.e-sim.org/index.php/Auctions">Auctions tutorial</a><table  class="dataTable " style="margin: auto;width: 680px;width:100% !important"><tr>
-            <td>Seller</td>
-            <td>Top bidder</td>
-            <td>Item</td>
-            <td>Current price</td>
-            <td>Bidders</td>
-            <td>Time remaining</td>
-            <td id="auctionBid">Action</td>
-        </tr>
-            <tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=125">John Nash</a> <div class="xflagsSmall xflagsSmall-Indonesia"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/12024_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159800">#159800</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bat" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase hit by 30</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-rock" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase strength by 14</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159800&quot;&gt;#159800&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Increase hit by 30<br/>* Increase strength by 14</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="0.10000">0.10</b> Gold</td>
-                <td>
-                    <b>1</b><br/>
-                    <a href="auction.html?id=59364">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+                                var fundraisingTimer1_2 = new Date();
+                                fundraisingTimer1_2.setHours(fundraisingTimer1_2.getHours() + 1);
+                                fundraisingTimer1_2.setMinutes(fundraisingTimer1_2.getMinutes() + 20);
+                                fundraisingTimer1_2.setSeconds(fundraisingTimer1_2.getSeconds() + 6);
+                                $('#fundraisingTimer1_2').countdown({
+                                    until: fundraisingTimer1_2,
+                                    compact: true,
+                                    format: 'dHMS',
+                                    expiryText: 'This round is already closed'
+                                });
+                            });
+                        </script>
+                    </td>
+                    <td> 2:5</td>
+                    <td> 10,676,139</td>
+                    <td> 14 hours ago</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div data-link="battle.html?id=4701" class="battleDiv" style="min-height:3.5rem;cursor:pointer;">
+                            <div style="width:20%;">
+                                <div class="xflagsMedium xflagsMedium-Indonesia"></div>
+                            </div>
+                            <div style="width:60%;">
+                                <div class="progress foundation-center">
+                                    <div style="width:100%;background:url('//cdn.e-sim.org//img/stripes.png') repeat scroll 0 0px, linear-gradient(to bottom, #BA5051 0px, #DB2024 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;" class="smallhelp bar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                                        <div style="width: 3.14186168133553%;margin: 0;" class="ui-progressbar-value ui-widget-header ui-corner-left"></div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;display:inline-block;">
+                                    <br>
+                                    <a href="battle.html?id=4701">Sumatra</a>
+                                    <br />
+                                    <span id="fundraisingTimer2_2"></span>
+                                </div>
+                            </div>
+                            <div style="width:20%;text-align:center;">
+                                <div class="xflagsMedium xflagsMedium-Bulgaria"></div>
+                            </div>
+                            <div style="width:100%;font-weight:normal;text-align:center;">
+                                <span>
+                                    Subsidies</span>
+                                <br />
+                                <div style="width:45%;display:inline-block">
+                                    <span>ID: none</span>
+                                </div>
+                                <div style="width:45%;display:inline-block">
+                                    <span>BG: none</span>
+                                </div>
+                            </div>
                         </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
 
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
+                        <script type="text/javascript">
                             $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
+                                var fundraisingTimer2_2 = new Date();
+                                fundraisingTimer2_2.setHours(fundraisingTimer2_2.getHours() + 0);
+                                fundraisingTimer2_2.setMinutes(fundraisingTimer2_2.getMinutes() + 31);
+                                fundraisingTimer2_2.setSeconds(fundraisingTimer2_2.getSeconds() + 4);
+                                $('#fundraisingTimer2_2').countdown({
+                                    until: fundraisingTimer2_2,
+                                    compact: true,
+                                    format: 'dHMS',
+                                    expiryText: 'This round is already closed'
                                 });
                             });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=705">steel</a> <div class="xflagsSmall xflagsSmall-Peru"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/267_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159787">#159787</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-scope2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Reduce miss chance by 1.04%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-shield2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase chance to avoid damage by 0.32%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159787&quot;&gt;#159787&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Reduce miss chance by 1.04%<br/>* Increase chance to avoid damage by 0.32%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="1.00000">1.00</b> Gold</td>
-                <td>
-                    <b>2</b><br/>
-                    <a href="auction.html?id=59351">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
+                        </script>
+                    </td>
+                    <td> 1:2</td>
+                    <td> 8,823,783</td>
+                    <td> 7 hours ago</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div data-link="battle.html?id=4702" class="battleDiv" style="min-height:3.5rem;cursor:pointer;">
+                            <div style="width:20%;">
+                                <div class="xflagsMedium xflagsMedium-Morocco"></div>
+                            </div>
+                            <div style="width:60%;">
+                                <div class="progress foundation-center">
+                                    <div style="width:100%;background:url('//cdn.e-sim.org//img/stripes.png') repeat scroll 0 0px, linear-gradient(to bottom, #BA5051 0px, #DB2024 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;" class="smallhelp bar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                                        <div style="width: 16.690278189039798%;margin: 0;" class="ui-progressbar-value ui-widget-header ui-corner-left"></div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;display:inline-block;">
+                                    <br>
+                                    <a href="battle.html?id=4702">Aswan</a>
+                                    <br />
+                                    <span id="fundraisingTimer3_2"></span>
+                                </div>
+                            </div>
+                            <div style="width:20%;text-align:center;">
+                                <div class="xflagsMedium xflagsMedium-Portugal"></div>
+                            </div>
+                            <div style="width:100%;font-weight:normal;text-align:center;">
+                                <span>
+                                    Subsidies</span>
+                                <br />
+                                <div style="width:45%;display:inline-block">
+                                    <span>MA: none</span>
+                                </div>
+                                <div style="width:45%;display:inline-block">
+                                    <span>PT: none</span>
+                                </div>
+                            </div>
                         </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
 
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
+                        <script type="text/javascript">
                             $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
+                                var fundraisingTimer3_2 = new Date();
+                                fundraisingTimer3_2.setHours(fundraisingTimer3_2.getHours() + 0);
+                                fundraisingTimer3_2.setMinutes(fundraisingTimer3_2.getMinutes() + 38);
+                                fundraisingTimer3_2.setSeconds(fundraisingTimer3_2.getSeconds() + 20);
+                                $('#fundraisingTimer3_2').countdown({
+                                    until: fundraisingTimer3_2,
+                                    compact: true,
+                                    format: 'dHMS',
+                                    expiryText: 'This round is already closed'
                                 });
                             });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=668">Yell0w</a> <div class="xflagsSmall xflagsSmall-Lithuania"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/204_small">
-                </td>
-                <td>
-                    <a  href="profile.html?id=1081"><span class="premiumStar">&#9733;</span> orhas</a> <div class="xflagsSmall xflagsSmall-Israel"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/653_small">
-                </td>
-                <td>
-                    <div class="itemBox"><img class="smallhelp"  style="width:60px;height:60px;" src="//cdn.e-sim.org//img/specialItems/painDealer10h_big.png"/></div>Pain dealer - ten hours</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="35.00000">35.00</b> Gold</td>
-                <td>
-                    <b>7</b><br/>
-                    <a href="auction.html?id=59518">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
+                        </script>
+                    </td>
+                    <td> 0:1</td>
+                    <td> 7,235,630</td>
+                    <td> 3 hours ago</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div data-link="battle.html?id=4699" class="battleDiv" style="min-height:3.5rem;cursor:pointer;">
+                            <div style="width:20%;">
+                                <div class="xflagsMedium xflagsMedium-Indonesia"></div>
+                            </div>
+                            <div style="width:60%;">
+                                <div class="progress foundation-center">
+                                    <div style="width:100%;background:url('//cdn.e-sim.org//img/stripes.png') repeat scroll 0 0px, linear-gradient(to bottom, #BA5051 0px, #DB2024 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;" class="smallhelp bar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                                        <div style="width: 34.52874623304979%;margin: 0;" class="ui-progressbar-value ui-widget-header ui-corner-left"></div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;display:inline-block;">
+                                    <br>
+                                    <a href="battle.html?id=4699">Western Visayas</a>
+                                    <br />
+                                    <span id="fundraisingTimer4_2"></span>
+                                </div>
+                            </div>
+                            <div style="width:20%;text-align:center;">
+                                <div class="xflagsMedium xflagsMedium-Peru"></div>
+                            </div>
+                            <div style="width:100%;font-weight:normal;text-align:center;">
+                                <span>
+                                    Subsidies</span>
+                                <br />
+                                <div style="width:45%;display:inline-block">
+                                    <span>ID: none</span>
+                                </div>
+                                <div style="width:45%;display:inline-block">
+                                    <span>PE: none</span>
+                                </div>
+                            </div>
                         </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
 
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
+                        <script type="text/javascript">
                             $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
+                                var fundraisingTimer4_2 = new Date();
+                                fundraisingTimer4_2.setHours(fundraisingTimer4_2.getHours() + 0);
+                                fundraisingTimer4_2.setMinutes(fundraisingTimer4_2.getMinutes() + 14);
+                                fundraisingTimer4_2.setSeconds(fundraisingTimer4_2.getSeconds() + 4);
+                                $('#fundraisingTimer4_2').countdown({
+                                    until: fundraisingTimer4_2,
+                                    compact: true,
+                                    format: 'dHMS',
+                                    expiryText: 'This round is already closed'
                                 });
                             });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=668">Yell0w</a> <div class="xflagsSmall xflagsSmall-Lithuania"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/204_small">
-                </td>
-                <td>
-                    <a  href="profile.html?id=1081"><span class="premiumStar">&#9733;</span> orhas</a> <div class="xflagsSmall xflagsSmall-Israel"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/653_small">
-                </td>
-                <td>
-                    <div class="itemBox"><img class="smallhelp"  style="width:60px;height:60px;" src="//cdn.e-sim.org//img/specialItems/painDealer10h_big.png"/></div>Pain dealer - ten hours</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="42.95000">42.95</b> Gold</td>
-                <td>
-                    <b>5</b><br/>
-                    <a href="auction.html?id=59517">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
+                        </script>
+                    </td>
+                    <td> 0:3</td>
+                    <td> 4,973,038</td>
+                    <td> 7 hours ago</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="position: relative">
+                            <div class="battleDiv" data-link="battle.html?id=4703" >
+                                <div style="line-height:12px">
+                                    <div class="xflagsMedium xflagsMedium-teamBlack"></div><br/></div>
+                                <div><p>vs</p></div>
+                                <div style="line-height:12px">
+                                    <div class="xflagsMedium xflagsMedium-teamWhite"></div><br/>
+                                </div>
+                                <div><a href="battle.html?id=4703">Practice battle</a></div>
+                                <div>
+                                </div>
+                            </div>
                         </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=668">Yell0w</a> <div class="xflagsSmall xflagsSmall-Lithuania"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/204_small">
-                </td>
-                <td>
-                    <a  href="profile.html?id=1081"><span class="premiumStar">&#9733;</span> orhas</a> <div class="xflagsSmall xflagsSmall-Israel"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/653_small">
-                </td>
-                <td>
-                    <div class="itemBox"><img class="smallhelp"  style="width:60px;height:60px;" src="//cdn.e-sim.org//img/specialItems/painDealer10h_big.png"/></div>Pain dealer - ten hours</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="42.97000">42.97</b> Gold</td>
-                <td>
-                    <b>7</b><br/>
-                    <a href="auction.html?id=59516">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
+                    </td>
+                    <td> 1:0</td>
+                    <td> 178,535</td>
+                    <td> 3 hours ago</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div data-link="battle.html?id=4704" class="battleDiv" style="min-height:3.5rem;cursor:pointer;">
+                            <div style="width:20%;">
+                                <div class="xflagsMedium xflagsMedium-Morocco"></div>
+                            </div>
+                            <div style="width:60%;">
+                                <div class="progress foundation-center">
+                                    <div style="width:100%;background:url('//cdn.e-sim.org//img/stripes.png') repeat scroll 0 0px, linear-gradient(to bottom, #BA5051 0px, #DB2024 100%) repeat scroll 0 0 rgba(0, 0, 0, 0) !important;" class="smallhelp bar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                                        <div style="width: 54.01448909909972%;margin: 0;" class="ui-progressbar-value ui-widget-header ui-corner-left"></div>
+                                    </div>
+                                </div>
+                                <div style="width:100%;display:inline-block;">
+                                    <br>
+                                    <a href="battle.html?id=4704">Red Sea Coast</a>
+                                    <br />
+                                    <span id="fundraisingTimer6_2"></span>
+                                </div>
+                            </div>
+                            <div style="width:20%;text-align:center;">
+                                <div class="xflagsMedium xflagsMedium-Iran"></div>
+                            </div>
+                            <div style="width:100%;font-weight:normal;text-align:center;">
+                                <span>
+                                    Subsidies</span>
+                                <br />
+                                <div style="width:45%;display:inline-block">
+                                    <span>MA: none</span>
+                                </div>
+                                <div style="width:45%;display:inline-block">
+                                    <span>IR: none</span>
+                                </div>
+                            </div>
                         </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
 
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
+                        <script type="text/javascript">
                             $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
+                                var fundraisingTimer6_2 = new Date();
+                                fundraisingTimer6_2.setHours(fundraisingTimer6_2.getHours() + 0);
+                                fundraisingTimer6_2.setMinutes(fundraisingTimer6_2.getMinutes() + 13);
+                                fundraisingTimer6_2.setSeconds(fundraisingTimer6_2.getSeconds() + 26);
+                                $('#fundraisingTimer6_2').countdown({
+                                    until: fundraisingTimer6_2,
+                                    compact: true,
+                                    format: 'dHMS',
+                                    expiryText: 'This round is already closed'
                                 });
                             });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=705">steel</a> <div class="xflagsSmall xflagsSmall-Peru"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/267_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159795">#159795</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bat" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase hit by 24</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bolt" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase damage by 0.76%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159795&quot;&gt;#159795&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Increase hit by 24<br/>* Increase damage by 0.76%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="0.11000">0.11</b> Gold</td>
-                <td>
-                    <b>2</b><br/>
-                    <a href="auction.html?id=59359">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=705">steel</a> <div class="xflagsSmall xflagsSmall-Peru"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/267_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159818">#159818</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bolt" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase damage by 0.56%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-scope2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Reduce miss chance by 0.67%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159818&quot;&gt;#159818&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Increase damage by 0.56%<br/>* Reduce miss chance by 0.67%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="0.11000">0.11</b> Gold</td>
-                <td>
-                    <b>2</b><br/>
-                    <a href="auction.html?id=59382">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=42551">Silva Seco</a> <div class="xflagsSmall xflagsSmall-Brazil"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/10148_small">
-                </td>
-                <td>
-                    <a  href="profile.html?id=2499"><span class="premiumStar">&#9733;</span> Wolfage</a> <div class="xflagsSmall xflagsSmall-United-Kingdom"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1949_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage vision1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Vision</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Sun goggles (<a href="/showEquipment.html?id=156788">#156788</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-rock" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase strength by 11</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-scope2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Reduce miss chance by 0.79%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/vision1-small.png"/> <br/>Sun goggles (&lt;a href=&quot;/showEquipment.html?id=156788&quot;&gt;#156788&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Vision</b> <br/>* Increase strength by 11<br/>* Reduce miss chance by 0.79%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="2.00000">2.00</b> Gold</td>
-                <td>
-                    <b>2</b><br/>
-                    <a href="auction.html?id=59251">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=42551">Silva Seco</a> <div class="xflagsSmall xflagsSmall-Brazil"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/10148_small">
-                </td>
-                <td>
-                    <a  href="profile.html?id=2499"><span class="premiumStar">&#9733;</span> Wolfage</a> <div class="xflagsSmall xflagsSmall-United-Kingdom"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/1949_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage vision1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Vision</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Sun goggles (<a href="/showEquipment.html?id=148718">#148718</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-shield2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase chance to avoid damage by 0.73%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-shield2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase chance to avoid damage by 0.57%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/vision1-small.png"/> <br/>Sun goggles (&lt;a href=&quot;/showEquipment.html?id=148718&quot;&gt;#148718&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Vision</b> <br/>* Increase chance to avoid damage by 0.73%<br/>* Increase chance to avoid damage by 0.57%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="2.00000">2.00</b> Gold</td>
-                <td>
-                    <b>2</b><br/>
-                    <a href="auction.html?id=59250">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=1103"><span class="premiumStar">&#9733;</span> Dark Douglas</a> <div class="xflagsSmall xflagsSmall-Israel"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/11869_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q2" style="float:left;margin:0px;">
-<div class="equipmentImage helmet2"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q2 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Classic combat helmet (<a href="/showEquipment.html?id=159778">#159778</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-danger" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase critical chance by 1.37%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bolt" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase damage by 1.36%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet2-small.png"/> <br/>Classic combat helmet (&lt;a href=&quot;/showEquipment.html?id=159778&quot;&gt;#159778&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q2 Helmet</b> <br/>* Increase critical chance by 1.37%<br/>* Increase damage by 1.36%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="6.50000">6.50</b> Gold</td>
-                <td>
-                    <b>5</b><br/>
-                    <a href="auction.html?id=59342">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=705">steel</a> <div class="xflagsSmall xflagsSmall-Peru"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/267_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q2" style="float:left;margin:0px;">
-<div class="equipmentImage helmet2"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q2 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Classic combat helmet (<a href="/showEquipment.html?id=159783">#159783</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bolt" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase damage by 1.44%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-rock" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase strength by 19</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet2-small.png"/> <br/>Classic combat helmet (&lt;a href=&quot;/showEquipment.html?id=159783&quot;&gt;#159783&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q2 Helmet</b> <br/>* Increase damage by 1.44%<br/>* Increase strength by 19</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="6.32000">6.32</b> Gold</td>
-                <td>
-                    <b>5</b><br/>
-                    <a href="auction.html?id=59347">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=705">steel</a> <div class="xflagsSmall xflagsSmall-Peru"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/267_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159788">#159788</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bat" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase hit by 26</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-lightning2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase maximum damage by 0.67%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159788&quot;&gt;#159788&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Increase hit by 26<br/>* Increase maximum damage by 0.67%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="1.50000">1.50</b> Gold</td>
-                <td>
-                    <b>4</b><br/>
-                    <a href="auction.html?id=59352">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=125">John Nash</a> <div class="xflagsSmall xflagsSmall-Indonesia"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/12024_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159822">#159822</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-lightning2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase maximum damage by 0.95%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-shield2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase chance to avoid damage by 0.44%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159822&quot;&gt;#159822&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Increase maximum damage by 0.95%<br/>* Increase chance to avoid damage by 0.44%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="0.10000">0.10</b> Gold</td>
-                <td>
-                    <b>1</b><br/>
-                    <a href="auction.html?id=59386">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=125">John Nash</a> <div class="xflagsSmall xflagsSmall-Indonesia"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/12024_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159820">#159820</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-lightning2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase maximum damage by 0.71%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-rock" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase strength by 13</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159820&quot;&gt;#159820&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Increase maximum damage by 0.71%<br/>* Increase strength by 13</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="0.10000">0.10</b> Gold</td>
-                <td>
-                    <b>1</b><br/>
-                    <a href="auction.html?id=59384">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=1216">ikac22</a> <div class="xflagsSmall xflagsSmall-Hungary"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/10158_small">
-                </td>
-                <td>
-                    <a  href="profile.html?id=67251">jacques Ecarlate</a> <div class="xflagsSmall xflagsSmall-France"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/11301_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage shoes1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Shoes</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Old school army shoes (<a href="/showEquipment.html?id=157519">#157519</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-shield2" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase chance to avoid damage by 0.52%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bat" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase hit by 28</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/shoes1-small.png"/> <br/>Old school army shoes (&lt;a href=&quot;/showEquipment.html?id=157519&quot;&gt;#157519&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Shoes</b> <br/>* Increase chance to avoid damage by 0.52%<br/>* Increase hit by 28</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="10.00000">10.00</b> Gold</td>
-                <td>
-                    <b>6</b><br/>
-                    <a href="auction.html?id=59479">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=3871">yokinami</a> <div class="xflagsSmall xflagsSmall-Kekistan"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/2500_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q2" style="float:left;margin:0px;">
-<div class="equipmentImage helmet2"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q2 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Classic combat helmet (<a href="/showEquipment.html?id=159771">#159771</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-rock" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase strength by 19</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bolt" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase damage by 1.65%</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet2-small.png"/> <br/>Classic combat helmet (&lt;a href=&quot;/showEquipment.html?id=159771&quot;&gt;#159771&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q2 Helmet</b> <br/>* Increase strength by 19<br/>* Increase damage by 1.65%</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="3.15000">3.15</b> Gold</td>
-                <td>
-                    <b>6</b><br/>
-                    <a href="auction.html?id=59335">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=68411">hani</a> <div class="xflagsSmall xflagsSmall-Morocco"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/12269_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q2" style="float:left;margin:0px;">
-<div class="equipmentImage helmet2"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q2 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Classic combat helmet (<a href="/showEquipment.html?id=159777">#159777</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-danger" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase critical chance by 1.22%</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bat" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase hit by 44</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet2-small.png"/> <br/>Classic combat helmet (&lt;a href=&quot;/showEquipment.html?id=159777&quot;&gt;#159777&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q2 Helmet</b> <br/>* Increase critical chance by 1.22%<br/>* Increase hit by 44</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="3.31000">3.31</b> Gold</td>
-                <td>
-                    <b>5</b><br/>
-                    <a href="auction.html?id=59341">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=1738">WinGo</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/3631_small">
-                </td>
-                <td>
-                    <img style="width:30px;height:30px;" class="help" title='<div class="equipmentBack q1" style="float:left;margin:0px;">
-<div class="equipmentImage helmet1"></div>
-</div>
-<div class="equipmentBlueBox" style="max-width:120px;height:auto !important;">	<b>Q1 Helmet</b></div>
-<div class="tooltipDiv" style="height:auto !important;"><b><bdo>Leather helmet (<a href="/showEquipment.html?id=159821">#159821</a>)</bdo></b></div>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-rock" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase strength by 13</p>
-<div style="float:left;width:99%;height:3px;"></div><div style="text-align:center!important;font-size:18px;" class="miniEquipmentRedCap"><i class="icon-bat" style="margin-top:8px!important;"></i></div><p class="miniStatsName">- Increase hit by 22</p>
-' src="//cdn.e-sim.org//img/equipmentIcons/helmet1-small.png"/> <br/>Leather helmet (&lt;a href=&quot;/showEquipment.html?id=159821&quot;&gt;#159821&lt;/a&gt<img src="//cdn.e-sim.org//img/emoticons/eye.png"/> <br/> <b>Q1 Helmet</b> <br/>* Increase strength by 13<br/>* Increase hit by 22</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="1.00000">1.00</b> Gold</td>
-                <td>
-                    <b>4</b><br/>
-                    <a href="auction.html?id=59385">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=125">John Nash</a> <div class="xflagsSmall xflagsSmall-Indonesia"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/12024_small">
-                </td>
-                <td>
-                    <div class="itemBox"><img class="smallhelp"  style="width:60px;height:60px;" src="//cdn.e-sim.org//img/specialItems/steroids_big.png"/></div>Steroids</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="0.40000">0.40</b> Gold</td>
-                <td>
-                    <b>1</b><br/>
-                    <a href="auction.html?id=59455">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr><tr>
-                <td> <a  href="profile.html?id=3">Item vendor</a> <div class="xflagsSmall xflagsSmall-Bosnia-and-Herzegovina"></div><br/>
-                    <img style="width:40px; height:40px; border:0px" src="//cdn.e-sim.org//img/blank-avatar.png">
-                </td>
-                <td>
-                    <a  href="profile.html?id=125">John Nash</a> <div class="xflagsSmall xflagsSmall-Indonesia"></div><br/>
-                    <img style="width:40px; height:40px; border:1px solid #888;" src="https://harmonia.e-sim.org:3000/avatarsHarmonia/12024_small">
-                </td>
-                <td>
-                    <div class="itemBox"><img class="smallhelp"  style="width:60px;height:60px;" src="//cdn.e-sim.org//img/specialItems/steroids_big.png"/></div>Steroids</td>
-                <td> <div class="xflagsSmall xflagsSmall-Gold"></div> <b title="0.40000">0.40</b> Gold</td>
-                <td>
-                    <b>1</b><br/>
-                    <a href="auction.html?id=59453">See details</a>
-                </td>
-                <td>
-                    <b>Finished</b><br/>
-                </td>
-                <td>
-                    <div id="auctionPushDiv" style="display:none">
-                        <br />
-                        <hr class="dashedLine">
-                        <br />
-                        <div id="auctionPushInfo" style="display:none">
-                            <i class="help icon icon-info" title="Send push notification 10 minutes before auction ends"></i>
-                        </div>
-                        <br />
-                        <button type="button" id="auctionPush" class="foundation-style button" style="padding:5px 7px;">
-                            Notify me
-                        </button>
-                    </div>
-                    <script type="text/javascript">
-                        var arePushesEnable = ;
-
-                        if (arePushesEnable && 'serviceWorker' in navigator) {
-                            $("#auctionPushDiv").show();
-                            $("#auctionPushInfo").show();
-                        }
-
-                        var isAuctionSubscribed = ;
-                        setText();
-                        var subscriptionButton = document.querySelector('#auctionPush');
-                        if (arePushesEnable) {
-                            subscriptionButton.addEventListener('click', function() {
-                                if(!isAuctionSubscribed) {
-                                    subscribe();
-                                } else {
-                                    unsubscribe();
-                                }
-                            });
-                        }
-
-                        function setText() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            if(isAuctionSubscribed) {
-                                subscriptionButton.textContent = 'Don\'t notify me';
-                            } else {
-                                subscriptionButton.textContent = 'Notify me';
-                            }
-                        }
-
-                        function unsubscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = false;
-                            removeAuctionFromSubscription();
-                            subscriptionButton.textContent = 'Notify me';
-                        }
-
-                        function subscribe() {
-                            var subscriptionButton = document.querySelector('#auctionPush');
-                            isAuctionSubscribed = true;
-                            addAuctionToSubscription();
-                            subscriptionButton.textContent = 'Don\'t notify me';
-                        }
-
-                        function addAuctionToSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': true}
-                                });
-                            });
-                        }
-
-                        function removeAuctionFromSubscription() {
-                            $(document).ready(function() {
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/auction.html?id=",
-                                    data: {'subscribeThisAuction': false}
-                                });
-                            });
-                        }
-                    </script></td>
-            </tr></table></div>
-            <br>
-
-            <div style="text-align: center">
-            </div>
-            <br>
-
+                        </script>
+                    </td>
+                    <td> 0:0</td>
+                    <td> 146,731</td>
+                    <td> 1 hour ago</td>
+                </tr>
+            </table>
+            <br/>
+            <div style="text-align: center"></div>
             <br />
         </td>
     </div>
