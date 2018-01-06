@@ -1,0 +1,399 @@
+FORMAT: 1A
+HOST: http://esim-tools.co.uk
+# eSim Unofficial API
+
+A privately created API that gathers information from eSim. Currently there are only some basic tools regarding citizens and economics
+
+## Group Citizen
+
+### /api/{server}/citizen/{citizenID}/{id}
+
++ Parameters
+    + server: harmonia (enum[string]) (required) 
+        + Members
+            + `primera`
+            + `secura`
+            + `suna`
+            + `harmonia`
+            + `terra`
+            + `ww2`
+    + citizenID: 123 (number) (required)
+
+#### Get Citizen by ID [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 200 (application/json)
+
+    Status 200
+
+    + Body
+
+            {
+              "birthday": "cupidatat",
+              "citizenship": "sint dolor dolore",
+              "damage": 11977328,
+              "economySkill": 5777699,
+              "experience": 44524830,
+              "level": -9673421,
+              "location": "ut sit",
+              "name": "fugiat aliqu",
+              "strength": -46460406
+            }
+
+    + Schema
+
+            {
+              "type": "object",
+              "required": [
+                "birthday",
+                "citizenship",
+                "damage",
+                "economySkill",
+                "experience",
+                "level",
+                "location",
+                "name",
+                "strength"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "name of the citizen",
+                  "example": "The Doctor"
+                },
+                "level": {
+                  "type": "integer",
+                  "description": "citizen experience level",
+                  "example": 1
+                },
+                "experience": {
+                  "type": "number",
+                  "description": "number of experience points",
+                  "example": 100
+                },
+                "damage": {
+                  "type": "number",
+                  "description": "total damage dealt",
+                  "example": "1,000,000"
+                },
+                "economySkill": {
+                  "type": "number",
+                  "description": "total economy skill",
+                  "example": 5
+                },
+                "strength": {
+                  "type": "number",
+                  "description": "number of strength points",
+                  "example": "5,000"
+                },
+                "location": {
+                  "type": "string",
+                  "description": "current location",
+                  "example": "United Kingdom"
+                },
+                "citizenship": {
+                  "type": "string",
+                  "description": "citizenship location",
+                  "example": "United Kingdom"
+                },
+                "birthday": {
+                  "type": "string",
+                  "description": "in-game day of birth",
+                  "example": "Day 1"
+                },
+                "militaryUnit": {
+                  "type": "string",
+                  "description": "name of military unit",
+                  "example": "Rebel Alliance"
+                },
+                "party": {
+                  "type": "string",
+                  "description": "name of party",
+                  "example": "Monster Raving Loony Party"
+                }
+              }
+            }
+
+## Group Economy
+
+### /api/{server}/product/{resource}/{country}/{quality}
+
++ Parameters
+
+    + server: harmonia (enum[string]) (required)
+        + Members
+            + `primera`
+            + `secura`
+            + `suna`
+            + `harmonia`
+            + `terra`
+            + `ww2`
+    + resource: iron (enum[string]) (required)
+        + Members
+            + `iron`
+            + `grain`
+            + `oil`
+            + `stone`
+            + `wood`
+            + `diamonds`
+            + `weapon`
+            + `house`
+            + `gift`
+            + `food`
+            + `ticket`
+            + `defence_system`
+            + `hospital`
+            + `estate`
+    + country: 6 (number) (required)
+    + quality: 4 (enum[number]) (required)
+        + Members
+            + `0 (all)`
+            + `1`
+            + `2`
+            + `3`
+            + `4`
+            + `5`
+            + `6`
+
+#### Get market listings [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 200 (application/json)
+
+    Status 200
+
+    + Body
+
+            [
+              {
+                "amount": 1000,
+                "currency": "GBP",
+                "price": 10,
+                "seller": "The Doctor"
+              },
+              {
+                "amount": 50,
+                "currency": "GBP",
+                "price": 0.08,
+                "seller": "The Master"
+              },
+              {
+                "amount": 736,
+                "currency": "USD",
+                "price": 2.3,
+                "seller": "Tony Stark"
+              }
+            ]
+
+    + Schema
+
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "amount",
+                  "currency",
+                  "price",
+                  "seller"
+                ],
+                "properties": {
+                  "currency": {
+                    "type": "string",
+                    "description": "listing currency",
+                    "example": "USD"
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "price per item",
+                    "example": 1.18
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "quantity of items on sale"
+                  },
+                  "seller": {
+                    "type": "string",
+                    "description": "name of the seller",
+                    "example": "Fred Flinstone"
+                  }
+                }
+              }
+            }
+
+### /api/{server}/exchange/{to}/{from}
+
++ Parameters
+
+    + server: harmonia (enum[string]) (required)
+        + Members
+            + `primera`
+            + `secura`
+            + `suna`
+            + `harmonia`
+            + `terra`
+            + `ww2`
+    + to: 0 (number) (required) - country ID (gold=0)
+    + from: 8 (number) (required) - country ID (gold=0)
+
+#### Get exchange listings [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 200 (application/json)
+
+    Status 200
+
+    + Body
+
+            [
+              {
+                "amount": 10,
+                "from": "GOLD",
+                "rate": 19.75,
+                "seller": "Steve Rogers",
+                "to": "GBP"
+              }
+            ]
+
+    + Schema
+
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "amount",
+                  "from",
+                  "rate",
+                  "seller",
+                  "to"
+                ],
+                "properties": {
+                  "to": {
+                    "type": "string",
+                    "description": "name of currency converted too",
+                    "example": "ISK"
+                  },
+                  "rate": {
+                    "type": "number",
+                    "description": "rate of exchange",
+                    "example": 20.4555
+                  },
+                  "from": {
+                    "type": "string",
+                    "description": "name of currency converted from",
+                    "example": "Gold"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "quantity on sale",
+                    "example": 200.56
+                  },
+                  "seller": {
+                    "type": "string",
+                    "description": "name of the seller",
+                    "example": "Willy Wonka"
+                  }
+                }
+              }
+            }
+
+### /api/{server}/auctions/{status}/{sorting}/{page}
+
++ Parameters
+
+    + server: harmonia (enum[string]) (required)
+        + Members
+            + `primera`
+            + `secura`
+            + `suna`
+            + `harmonia`
+            + `terra`
+            + `ww2`
+    + status: in_progress (enum[string]) (required)
+        + Members
+            + `in_progress`
+            + `sold`
+            + `closed`
+    + sorting: time (enum[string]) (required)
+        + Members
+            + `time`
+            + `price`
+            + `total_bids`
+    + page: 1 (number) (required)
+
+#### Get auction listings [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 200 (application/json)
+
+    Status 200
+
+    + Body
+    
+            [
+                {
+                    "seller": "Tony Stark",
+                    "name": "Field map Q2 Offhand * Increase hit by 44* Increase damage by 1.96%",
+                    "price": 19.75
+                }
+            ]
+            
+    + Schema
+    
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "seller",
+                      "name",
+                      "price",
+                    ],
+                    "properties": {
+                      "seller": {
+                        "type": "string",
+                        "description": "name of the seller",
+                        "example": "Willy Wonka"
+                      }
+                      "name": {
+                        "type": "string",
+                        "description": "item name",
+                        "example": "Classic combat helmet Q2 Helmet * Increase strength by 19* Increase damage by 1.63%"
+                      },
+                      "price": {
+                        "type": "number",
+                        "description": "current bid price",
+                        "example": 2.7
+                      }
+                    }
+                  }
+                }
