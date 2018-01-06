@@ -397,3 +397,77 @@ A privately created API that gathers information from eSim. Currently there are 
                     }
                   }
                 }
+                
+## Group Military
+
+### /api/{server}/battle/{country}
++ Parameters
+
+    + server: harmonia (enum[string]) (required)
+        + Members
+            + `primera`
+            + `secura`
+            + `suna`
+            + `harmonia`
+            + `terra`
+            + `ww2`
+    + country: 1 (number) (required)
+
+#### Get battles [GET]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
++ Response 200 (application/json)
+
+    Status 200
+
+    + Body
+            
+            [
+                {
+                    "region": "London",
+                    "score": "1:2",
+                    "damage": 12946782
+                },
+                {
+                    "region": "New York",
+                    "score": "5:0",
+                    "damage": 8635147
+                }
+            ]
+            
+    + Schema
+        
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "seller",
+                          "name",
+                          "price",
+                        ],
+                        "properties": {
+                          "region": {
+                            "type": "string",
+                            "description": "name of the region",
+                            "example": "London"
+                          }
+                          "score": {
+                            "type": "string",
+                            "description": "the current score",
+                            "example": "6:2"
+                          },
+                          "damage": {
+                            "type": "number",
+                            "description": "total damage dealt",
+                            "example": 1563721
+                          }
+                        }
+                      }
+                    }
