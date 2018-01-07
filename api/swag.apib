@@ -432,11 +432,21 @@ A privately created API that gathers information from eSim. Currently there are 
                 {
                     "region": "London",
                     "score": "1:2",
+                    "time": {
+                        "hours": 0,
+                        "minutes": 28,
+                        "seconds": 4
+                    }
                     "damage": 12946782
                 },
                 {
                     "region": "New York",
                     "score": "5:0",
+                    "time": {
+                        "hours": 1,
+                        "minutes": 5
+                        "seconds": 57
+                    }
                     "damage": 8635147
                 }
             ]
@@ -463,6 +473,15 @@ A privately created API that gathers information from eSim. Currently there are 
                             "description": "the current score",
                             "example": "6:2"
                           },
+                          "timer": {
+                            "type": "object",
+                            "description": "timer at time of request",
+                            "example": {
+                                "hours": 0,
+                                "minutes": 2,
+                                "seconds": 45
+                            }
+                          }
                           "damage": {
                             "type": "number",
                             "description": "total damage dealt",

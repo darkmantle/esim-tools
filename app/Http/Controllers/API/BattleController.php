@@ -30,17 +30,17 @@ class BattleController extends Controller {
 
 			if (str_contains($tds[0], "Practice ")) continue;
 
-			$test = $tds[0];
-            preg_match('/.+?(?=\))/', explode('getHours() + ', $test)[1], $hours);
-			preg_match('/.+?(?=\))/', explode('getMinutes() + ', $test)[1], $minutes);
-            preg_match('/.+?(?=\))/', explode('getSeconds() + ', $test)[1], $seconds);
+			$battle = new \stdClass();
+			$battle->timer = new \stdClass();
+			
+            preg_match('/.+?(?=\))/', explode('getHours() + ', $tds[0])[1], $battle->timer->hours);
+			preg_match('/.+?(?=\))/', explode('getMinutes() + ', $tds[0])[1], $battle->timer->minutes);
+            preg_match('/.+?(?=\))/', explode('getSeconds() + ', $tds[0])[1], $battle->timer->seconds);
 
 			$nf = new \NumberFormatter("en_EN", \NumberFormatter::DECIMAL);
 
-			$battle = new \stdClass();
 			$battle->region = explode("Subsidies", $tds[0])[0];
 			$battle->score = $tds[1];
-			$battle->time = $hours[0]." hour ".$minutes[0]." minutes";
 			$battle->damage = $nf->parse($tds[2], \NumberFormatter::TYPE_INT32);
 			$rows[] = $battle;
 
