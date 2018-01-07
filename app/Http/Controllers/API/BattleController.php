@@ -31,11 +31,11 @@ class BattleController extends Controller {
 			if (str_contains($tds[0], "Practice ")) continue;
 
 			$battle = new \stdClass();
-			$battle->timer = new \stdClass();
+			$battle->time = new \stdClass();
 			
-            preg_match('/.+?(?=\))/', explode('getHours() + ', $tds[0])[1], $battle->timer->hours);
-			preg_match('/.+?(?=\))/', explode('getMinutes() + ', $tds[0])[1], $battle->timer->minutes);
-            preg_match('/.+?(?=\))/', explode('getSeconds() + ', $tds[0])[1], $battle->timer->seconds);
+            preg_match('/.+?(?=\))/', explode('getHours() + ', $tds[0])[1], $battle->time->hours);
+			preg_match('/.+?(?=\))/', explode('getMinutes() + ', $tds[0])[1], $battle->time->minutes);
+            preg_match('/.+?(?=\))/', explode('getSeconds() + ', $tds[0])[1], $battle->time->seconds);
 
 			$nf = new \NumberFormatter("en_EN", \NumberFormatter::DECIMAL);
 
