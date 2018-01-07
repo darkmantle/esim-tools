@@ -39,7 +39,7 @@ class BattleController extends Controller {
 
 			$nf = new \NumberFormatter("en_EN", \NumberFormatter::DECIMAL);
 
-			$battle->region = explode("Subsidies", $tds[0])[0];
+			$battle->region = trim(explode("Subsidies", $tds[0])[0]);
 			$battle->score = $tds[1];
 			$battle->damage = $nf->parse($tds[2], \NumberFormatter::TYPE_INT32);
 			$rows[] = $battle;
