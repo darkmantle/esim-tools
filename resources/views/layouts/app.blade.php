@@ -48,8 +48,8 @@
                             <li><a onclick="onServerChange('primera')">Primera</a></li>
                             <li><a onclick="onServerChange('secura')">Secura</a></li>
                             <li><a onclick="onServerChange('suna')">Suna</a></li>
-                            <li><a onclick="onServerChange('suburbia')">Suburbia</a></li>
-                            <li><a onclick="onServerChange('harmonia')">Harmonia</a></li>
+                            <li><a onclick="onServerChange('WW2')">WW2</a></li>
+                            <li><a onclick="onServerChange('XIX')">XIX</a></li>
                             <li><a onclick="onServerChange('terra')">Terra</a></li>
                         </ul>
                     </li>
