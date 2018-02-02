@@ -43,7 +43,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{ ucwords(Session::get('esim_server', 'harmonia')) }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{ ucwords(Session::get('esim_server', 'XIX')) }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a onclick="onServerChange('primera')">Primera</a></li>
                             <li><a onclick="onServerChange('secura')">Secura</a></li>
