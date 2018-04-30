@@ -1,19 +1,15 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
 // Custom
 @import "bootswatch";
 @import "editable";
 
 .small-jumbotron-p {
-  font-size:18px !important;
+  font-size: 18px !important;
 }
 
 .company-page {
@@ -26,14 +22,16 @@
   }
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+table {
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-input[type=number] {
-  background: transparent;
-  color:white;
-  width:80px;
+  input[type=number] {
+    background: transparent;
+    color: white;
+    width: 80px;
+  }
 }
