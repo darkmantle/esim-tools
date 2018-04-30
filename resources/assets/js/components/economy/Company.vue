@@ -136,7 +136,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="rawPrice">Price of Raw Material</label>
-                            <input type="number" class="form-control focuser" id="rawPrice" value="0" step="0.1"
+                            <input type="number" class="form-control" id="rawPrice" value="0" step="0.1" v-on:change="changeRawPrice"
                                    ref="rawPrice">
                         </div>
                     </div>
@@ -178,6 +178,9 @@
                 this.calculate();
             },
             changeSalary: function() {
+                this.calculate();
+            },
+            changeRawPrice: function() {
                 this.calculate();
             },
             tableAdd: function () {
