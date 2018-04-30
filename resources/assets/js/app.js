@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+const server = require('./server');
 
 window.Vue = require('vue');
 Vue.use(require('vue-resource'));
@@ -16,6 +17,7 @@ Vue.use(require('vue-resource'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.mixin(server);
 Vue.component('exchange', require('./components/economy/Exchange.vue'));
 Vue.component('product', require('./components/economy/Products.vue'));
 Vue.component('jobs', require('./components/economy/Jobs.vue'));
