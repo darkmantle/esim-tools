@@ -18,10 +18,10 @@ Vue.use(require('vue-resource'));
  */
 
 Vue.mixin(server);
-Vue.component('exchange', require('./components/economy/Exchange.vue'));
-Vue.component('product', require('./components/economy/Products.vue'));
-Vue.component('jobs', require('./components/economy/Jobs.vue'));
-Vue.component('company', require('./components/economy/Company.vue'));
+Vue.component('exchange', require('./components/economy/Exchange.vue').default);
+Vue.component('product', require('./components/economy/Products.vue').default);
+Vue.component('jobs', require('./components/economy/Jobs.vue').default);
+Vue.component('company', require('./components/economy/Company.vue').default);
 
 const app = new Vue({
     el: '#app'
