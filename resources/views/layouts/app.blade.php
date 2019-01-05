@@ -41,15 +41,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                       aria-expanded="false">{{ ucwords(Session::get('esim_server', 'XIX')) }} <span
+                       aria-expanded="false">{{ ucwords(Session::get('esim_server', 'primera')) }} <span
                                 class="caret"></span></a>
                     <div class="dropdown-menu">
                         <a class="nav-link" onclick="onServerChange('primera')">Primera</a>
                         <a class="nav-link" onclick="onServerChange('secura')">Secura</a>
                         <a class="nav-link" onclick="onServerChange('suna')">Suna</a>
-                        <a class="nav-link" onclick="onServerChange('WW2')">WW2</a>
-                        <a class="nav-link" onclick="onServerChange('XIX')">XIX</a>
-                        <a class="nav-link" onclick="onServerChange('xaria')">Xaria</a>
+                        <a class="nav-link" onclick="onServerChange('omega')">Omega</a>
+                        <a class="nav-link" onclick="onServerChange('alpha')">Alpha</a>
                     </div>
                 </li>
 
