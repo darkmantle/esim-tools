@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://esim-tools.co.uk
+HOST: https://esim-tools.co.uk
 # eSim Unofficial API
 
 A privately created API that gathers information from eSim. Currently there are only some basic tools regarding citizens and economics
@@ -9,13 +9,13 @@ A privately created API that gathers information from eSim. Currently there are 
 ### /api/{server}/citizen/{citizenID}/{id}
 
 + Parameters
-    + server: harmonia (enum[string]) (required) 
+    + server: primera (enum[string]) (required) 
         + Members
             + `primera`
             + `secura`
             + `suna`
-            + `harmonia`
-            + `terra`
+            + `omega`
+            + `alpha`
             + `ww2`
     + citizenID: 123 (number) (required)
 
@@ -127,12 +127,12 @@ A privately created API that gathers information from eSim. Currently there are 
 
 + Parameters
 
-    + server: harmonia (enum[string]) (required)
+    + server: primera (enum[string]) (required)
         + Members
             + `primera`
             + `secura`
             + `suna`
-            + `harmonia`
+            + `primera`
             + `terra`
             + `ww2`
     + resource: iron (enum[string]) (required)
@@ -239,12 +239,12 @@ A privately created API that gathers information from eSim. Currently there are 
 
 + Parameters
 
-    + server: harmonia (enum[string]) (required)
+    + server: primera (enum[string]) (required)
         + Members
             + `primera`
             + `secura`
             + `suna`
-            + `harmonia`
+            + `primera`
             + `terra`
             + `ww2`
     + to: 0 (number) (required) - country ID (gold=0)
@@ -323,12 +323,12 @@ A privately created API that gathers information from eSim. Currently there are 
 
 + Parameters
 
-    + server: harmonia (enum[string]) (required)
+    + server: primera (enum[string]) (required)
         + Members
             + `primera`
             + `secura`
             + `suna`
-            + `harmonia`
+            + `primera`
             + `terra`
             + `ww2`
     + status: in_progress (enum[string]) (required)
@@ -403,12 +403,12 @@ A privately created API that gathers information from eSim. Currently there are 
 ### /api/{server}/battle/{country}
 + Parameters
 
-    + server: harmonia (enum[string]) (required)
+    + server: primera (enum[string]) (required)
         + Members
             + `primera`
             + `secura`
             + `suna`
-            + `harmonia`
+            + `primera`
             + `terra`
             + `ww2`
     + country: 1 (number) (required)
