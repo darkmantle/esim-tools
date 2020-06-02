@@ -31,15 +31,17 @@ class CitizenController extends Controller
 
         $citizen = new \stdClass();
 
-        $name = $crawler->filter('h2');
-        $name = explode("\xC2", $name->getNode(0)->nodeValue, 2);
-        $citizen->name = trim($name[1], " \t\n\r\0\x0B\xC2\xA0");
+        $name = $crawler->filter('.big-login');
+        $citizen->name = $name->getNode(0)->nodeValue;
 
-        $table = $crawler->filter('.smallTableFont');
-        foreach ($table->children() as $child) {
-            $arr = explode(":", $child->nodeValue);
-            $name = $this->parseName($arr[0]);
-            $citizen->{$name} = trim($arr[1]);
+        $table = $crawler->filter('.profile-data')->eq(1);
+        $children = $table->children();
+
+        for ($i = 1; $i < (count($children)-1); $i++) {
+            $child = $children->getNode($i);
+            $arr = array_values(array_filter(explode(" ", trim($child->nodeValue))));
+            $name = $this->parseName($arr[1]);
+            $citizen->{$name} = trim($arr[0]);
         }
 
         $mu = $crawler->filter('a[href*="military"]');
